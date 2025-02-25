@@ -7,6 +7,12 @@ import "codemirror/theme/ayu-dark.css";
 import { useEffect, useState } from "react";
 import { jsonLanguage } from "@codemirror/lang-json";
 
+if (typeof navigator !== "undefined") {
+  require("codemirror/mode/xml/xml");
+  require("codemirror/mode/css/css");
+  require("codemirror/mode/javascript/javascript");
+}
+
 export default function Home() {
   const testObj = {
     name: "Dragan",

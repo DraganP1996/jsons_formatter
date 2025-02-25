@@ -1,0 +1,14 @@
+.CodeMirror {
+  height: 700px !important;
+  position: relative;
+}
+
+.CodeMirror-dialog {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  padding: 4px;
+  background-color: oklch(0.809 0.105 251.813);
+  font-size: 12px;
+  width: fit-content;
+}
