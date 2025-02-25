@@ -1,9 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import { Controlled } from "react-codemirror2";
 import { jsonLanguage } from "@codemirror/lang-json";
 
 import "codemirror/lib/codemirror.css";
+import "codemirror/theme/material.css";
 import "../../styles/editor.css";
 import "codemirror/addon/lint/lint.css";
 
@@ -26,10 +29,11 @@ if (typeof navigator !== "undefined") {
 type EditorProps = {
   value: string;
   isReady: boolean;
+  tabSize?: number;
   onChange: (value: string) => void;
 };
 
-export const Editor = ({ value, isReady, onChange }: EditorProps) => {
+export const Editor = ({ value, isReady, tabSize = 2, onChange }: EditorProps) => {
   const handleChange = (editor: unknown, data: unknown, value: string) => {
     onChange(value);
   };
@@ -47,6 +51,8 @@ export const Editor = ({ value, isReady, onChange }: EditorProps) => {
           languages: [jsonLanguage],
           lineNumbers: true,
           gutters: ["CodeMirror-lint-markers"],
+          theme: "material",
+          tabSize: tabSize,
         }}
         className="h-full"
       />
