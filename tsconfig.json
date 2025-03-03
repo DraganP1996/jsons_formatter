@@ -19,6 +19,7 @@
       }
     ],
     "paths": {
+      "@webeditors/react/*": ["./node_modules/@webeditors/react/*"],
       "@/*": ["./src/*"]
     }
   },

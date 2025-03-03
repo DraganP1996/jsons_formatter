@@ -9,22 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@codemirror/lang-json": "^6.0.1",
-    "@codemirror/language-data": "^6.5.1",
     "@radix-ui/react-navigation-menu": "^1.2.5",
     "@radix-ui/react-select": "^2.1.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "codemirror": "^5.65.16",
-    "jsonlint-mod": "^1.7.6",
     "lucide-react": "^0.475.0",
     "next": "15.1.7",
     "prettier": "^3.5.2",
     "react": "^18.0.0",
-    "react-codemirror2": "^8.0.1",
     "react-dom": "^18.0.0",
     "tailwind-merge": "^3.0.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "webeditors-react": "0.0.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

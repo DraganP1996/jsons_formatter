@@ -1,4 +1,4 @@
-import { StringJSON } from "@/components/layout";
+import { JSONBeautifier } from "@/components/layout";
 
 const mockJSON = [
   {
@@ -239,11 +239,11 @@ const mockJSON = [
   },
 ];
 
-export default function StringToJSON() {
+export default function JSONBeautifyPage() {
   return (
     <>
-      <h1 className="text-xl font-bold p-2 text-center"> Stirng to JSON Converter</h1>
-      <StringJSON initialValue={JSON.stringify(mockJSON, null, 2)} />
+      <h1 className="text-xl font-bold p-2 text-center"> JSON Beatifier</h1>
+      <JSONBeautifier initialValue={JSON.stringify(mockJSON)} />
     </>
   );
 }

@@ -39,11 +39,11 @@ export const Header = () => {
                 <Link href="/json-to-string" title="Installation">
                   JSON to string
                 </Link>
-                <Link href="/json-beatify" title="Typography">
-                  JSON beatifier
+                <Link href="/json-beautify" title="Typography">
+                  JSON Beautify
                 </Link>
-                <Link href="/json-minimizer" title="Typography">
-                  JSON Minimizer
+                <Link href="/json-minify" title="Typography">
+                  JSON Minify
                 </Link>
               </ul>
             </NavigationMenuContent>

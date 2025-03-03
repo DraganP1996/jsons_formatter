@@ -1,4 +1,4 @@
-import { JSONBeautifier } from "@/components/json-beatifear";
+import { JSONMinify } from "@/components/layout";
 
 const mockJSON = [
   {
@@ -239,14 +239,11 @@ const mockJSON = [
   },
 ];
 
-export default function Home() {
+export default function JSONBeautifyPage() {
   return (
-    <div className="h-[calc(100vh-55px)]">
-      <main className="h-[calc(100vh-55px)]">
-        <h1 className="text-xl font-bold p-2 text-center"> JSON Beatifier</h1>
-        <JSONBeautifier initialValue={JSON.stringify(mockJSON)} />
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
-    </div>
+    <>
+      <h1 className="text-xl font-bold p-2 text-center"> JSON Minify</h1>
+      <JSONMinify initialValue={JSON.stringify(mockJSON, null, 2)} />
+    </>
   );
 }
