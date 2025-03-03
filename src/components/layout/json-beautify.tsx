@@ -6,6 +6,7 @@ import { BeautifierControls } from "../controls";
 import { TabSizes } from "@/types";
 import { useClientSideChecker, useSourceResultEditors } from "@/hook";
 import { useTabSize } from "@/hook/useTabSize";
+import { jsonToUrlConversion } from "@/lib/json-to-url";
 
 type JSONBeautifierProps = {
   initialValue: string;
@@ -16,9 +17,7 @@ const INITIAL_TAB_SIZE = 2;
 export const JSONBeautifier = ({ initialValue }: JSONBeautifierProps) => {
   const isReadyToLoadEditor = useClientSideChecker();
   const { source, result, setSource, setResult } = useSourceResultEditors();
-  const [theme, setTheme] = useState("solarizedLight");
-
-  console.log("Check the result value", result);
+  const [theme, setTheme] = useState("espresso");
 
   const handleSourceChange = useCallback(
     (value: string, tabSize: number) => {
@@ -50,6 +49,13 @@ export const JSONBeautifier = ({ initialValue }: JSONBeautifierProps) => {
     setTheme(theme);
   }, []);
 
+  const handleUrlConversion = () => {
+    const params = jsonToUrlConversion(source);
+    const jsParams = Object.fromEntries(params.entries());
+
+    console.log(JSON.parse(JSON.stringify(jsParams)));
+  };
+
   const { tabSize, setTabSize } = useTabSize(2, handleTabSizeChange);
 
   useEffect(() => {
@@ -58,14 +64,16 @@ export const JSONBeautifier = ({ initialValue }: JSONBeautifierProps) => {
   }, [initialValue, setResult, setSource]);
 
   return (
-    <div className="grid grid-cols-[2fr,1fr,2fr] h-[calc(100vh-99px)] overflow-hidden">
+    <div className="grid grid-cols-[2fr,auto,2fr] h-[calc(100vh-99px)] overflow-hidden">
       <Editor isReady={isReadyToLoadEditor} value={source} theme={theme} />
       <BeautifierControls
         tabSize={tabSize}
+        theme={theme}
         changeTabSize={setTabSize}
         changeTheme={handleThemeChange}
+        onUrlConversion={handleUrlConversion}
       />
-      <Editor isReady={isReadyToLoadEditor} value={result} theme={theme} />
+      <Editor isReady={isReadyToLoadEditor} value={result} theme={theme} readonly={true} />
     </div>
   );
 };

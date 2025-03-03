@@ -6,6 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TabSizes } from "@/types";
+import { Button } from "../ui/button";
 
 const THEMES = [
   "amy",
@@ -28,14 +29,18 @@ const THEMES = [
 
 type BeautifierControlsProps = {
   tabSize?: TabSizes;
+  theme: string;
   changeTabSize?: (tabSize: TabSizes) => void;
   changeTheme: (theme: string) => void;
+  onUrlConversion: () => void;
 };
 
 export const BeautifierControls = ({
   tabSize,
+  theme,
   changeTabSize,
   changeTheme,
+  onUrlConversion,
 }: BeautifierControlsProps) => {
   const handleValueChange = (value: string) => {
     const numericValue = +value;
@@ -46,8 +51,8 @@ export const BeautifierControls = ({
   };
 
   const themeSelect = (
-    <Select onValueChange={changeTheme}>
-      <SelectTrigger className="w-[180px]">
+    <Select onValueChange={changeTheme} value={theme}>
+      <SelectTrigger className="w-[180px] bg-white">
         <SelectValue placeholder="Editor theme" />
       </SelectTrigger>
       <SelectContent>
@@ -63,7 +68,7 @@ export const BeautifierControls = ({
 
   const tabSizeSelect = (
     <Select onValueChange={handleValueChange} value={`${tabSize}`}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[180px] bg-white">
         <SelectValue placeholder="Space Tab" />
       </SelectTrigger>
       <SelectContent>
@@ -76,9 +81,33 @@ export const BeautifierControls = ({
     </Select>
   );
 
+  const convertTo = (
+    <Select>
+      <SelectTrigger className="w-[180px] bg-white">
+        <SelectValue placeholder="Convert to" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="csv"> CSV </SelectItem>
+        <SelectItem value="xml"> XML </SelectItem>
+        <SelectItem value="yaml"> YAML </SelectItem>
+      </SelectContent>
+    </Select>
+  );
+
   return (
-    <div className="flex flex-col items-center py-2 gap-2">
-      {themeSelect} {changeTabSize && tabSizeSelect}
+    <div className="flex flex-col items-center p-2 gap-2">
+      <Button className="w-[180px]">Upload data</Button>
+      {themeSelect}
+      {changeTabSize && tabSizeSelect}
+      {convertTo}
+      <Button variant="link" className="w-[180px]" onClick={onUrlConversion}>
+        Create link{" "}
+      </Button>
+      <Button className="w-[180px]"> Download </Button>
+      <Button variant="destructive" className="w-[180px]">
+        {" "}
+        Clear{" "}
+      </Button>
     </div>
   );
 };

@@ -25,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-[100vh]`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-[100vh] bg-slate-50`}
+      >
         <Header />
         <div className="h-[calc(100vh-55px)]">
           <main className="h-[calc(100vh-55px)]">{children}</main>

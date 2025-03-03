@@ -242,6 +242,7 @@ const mockJSON = [
 export default function JSONBeautifyPage() {
   return (
     <>
+      {/* <h1 className="text-xl font-bold p-2 text-center"> JSON Beatifier</h1> */}
       <JSONBeautifier initialValue={JSON.stringify(mockJSON)} />
     </>
   );
