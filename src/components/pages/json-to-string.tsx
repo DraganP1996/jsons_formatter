@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import { Converter, ConverterEditorConfigurations } from "../converter";
-import { TabSizes } from "@/types";
+import { ControlsConfig } from "../controls";
 
 const mockJSON = [
   {
@@ -243,24 +243,34 @@ const mockJSON = [
   },
 ];
 
+const converterControlsConfig: ControlsConfig = {
+  showTabSizeControl: false,
+  showUploadControl: true,
+  showThemeControl: true,
+  showConvertToControl: true,
+  showCreateLinkControl: true,
+  showDownloadControl: false,
+  showClearControl: true,
+};
+
 export const JSONToStringPageLayout = () => {
   const configurations: ConverterEditorConfigurations = {
     0: {
-      value: JSON.stringify(mockJSON),
+      id: "json_editor_origin_item",
+      value: JSON.stringify(mockJSON, null, 2),
       mode: "json",
       readonly: false,
     },
     1: {
-      value: JSON.stringify(mockJSON, null, 2),
-      mode: "json",
+      id: "json_editor_result_item",
+      value: JSON.stringify(JSON.stringify(mockJSON)),
+      mode: "text",
       readonly: true,
     },
   };
 
-  const sourceChangeFn = useCallback((value: string, tabSize?: TabSizes) => {
-    return tabSize !== undefined
-      ? JSON.stringify(JSON.parse(value), null, tabSize)
-      : JSON.stringify(JSON.parse(value));
+  const sourceChangeFn = useCallback((value: string) => {
+    return JSON.stringify(JSON.stringify(JSON.parse(value)));
   }, []);
 
   return (
@@ -268,6 +278,7 @@ export const JSONToStringPageLayout = () => {
       configurations={configurations}
       sourceChangeFn={sourceChangeFn}
       initialTabSize={2}
+      converterControlsConfig={converterControlsConfig}
       allowTabSizeChange
     />
   );

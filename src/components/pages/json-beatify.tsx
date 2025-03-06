@@ -3,6 +3,7 @@
 import { useCallback } from "react";
 import { Converter, ConverterEditorConfigurations } from "../converter";
 import { TabSizes } from "@/types";
+import { ControlsConfig } from "../controls";
 
 const mockJSON = [
   {
@@ -243,14 +244,26 @@ const mockJSON = [
   },
 ];
 
+const converterControlsConfig: ControlsConfig = {
+  showTabSizeControl: true,
+  showUploadControl: true,
+  showThemeControl: true,
+  showConvertToControl: true,
+  showCreateLinkControl: true,
+  showDownloadControl: true,
+  showClearControl: true,
+};
+
 export const JSONBeatifyPageLayout = () => {
   const configurations: ConverterEditorConfigurations = {
     0: {
+      id: "json_editor_origin_item",
       value: JSON.stringify(mockJSON),
       mode: "json",
       readonly: false,
     },
     1: {
+      id: "json_editor_result_item",
       value: JSON.stringify(mockJSON, null, 2),
       mode: "json",
       readonly: true,
@@ -268,6 +281,7 @@ export const JSONBeatifyPageLayout = () => {
       configurations={configurations}
       sourceChangeFn={sourceChangeFn}
       initialTabSize={2}
+      converterControlsConfig={converterControlsConfig}
       allowTabSizeChange
     />
   );

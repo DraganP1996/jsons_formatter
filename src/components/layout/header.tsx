@@ -43,6 +43,12 @@ export const Header = () => {
                 <Link href="/yaml-to-json" className="leading-4">
                   YAML to JSON conversion
                 </Link>
+                <Link href="/json-to-xml" className="leading-4">
+                  JSON to XML conversion
+                </Link>
+                <Link href="/xml-to-json" className="leading-4">
+                  XML to JSON conversion
+                </Link>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>

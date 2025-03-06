@@ -27,17 +27,34 @@ const THEMES = [
   "tomorrow",
 ];
 
+export type ControlsConfig = {
+  showTabSizeControl: boolean;
+  showUploadControl: boolean;
+  showThemeControl: boolean;
+  showConvertToControl: boolean;
+  showCreateLinkControl: boolean;
+  showDownloadControl: boolean;
+  showClearControl: boolean;
+};
+
 type BeautifierControlsProps = {
   tabSize?: TabSizes;
   theme: string;
   changeTabSize?: (tabSize: TabSizes) => void;
   changeTheme: (theme: string) => void;
   onUrlConversion: () => void;
-};
+} & ControlsConfig;
 
-export const BeautifierControls = ({
+export const ConvertControls = ({
   tabSize,
   theme,
+  showTabSizeControl,
+  showUploadControl,
+  showThemeControl,
+  showConvertToControl,
+  showCreateLinkControl,
+  showDownloadControl,
+  showClearControl,
   changeTabSize,
   changeTheme,
   onUrlConversion,
@@ -58,8 +75,7 @@ export const BeautifierControls = ({
       <SelectContent>
         {THEMES.map((theme) => (
           <SelectItem key={theme} value={theme}>
-            {" "}
-            {theme}{" "}
+            {theme}
           </SelectItem>
         ))}
       </SelectContent>
@@ -95,19 +111,22 @@ export const BeautifierControls = ({
   );
 
   return (
-    <div className="flex flex-col items-center p-2 gap-2">
-      <Button className="w-[180px]">Upload data</Button>
-      {themeSelect}
-      {changeTabSize && tabSizeSelect}
-      {convertTo}
-      <Button variant="link" className="w-[180px]" onClick={onUrlConversion}>
-        Create link{" "}
-      </Button>
-      <Button className="w-[180px]"> Download </Button>
-      <Button variant="destructive" className="w-[180px]">
-        {" "}
-        Clear{" "}
-      </Button>
+    <div className="flex flex-row flex-wrap xl:flex-col items-center p-2 gap-2">
+      {showUploadControl && <Button className="w-[180px]">Upload data</Button>}
+      {showThemeControl && themeSelect}
+      {showTabSizeControl && changeTabSize && tabSizeSelect}
+      {showConvertToControl && convertTo}
+      {showCreateLinkControl && (
+        <Button variant="link" className="w-[180px]" onClick={onUrlConversion}>
+          Create link
+        </Button>
+      )}
+      {showDownloadControl && <Button className="w-[180px]"> Download </Button>}
+      {showClearControl && (
+        <Button variant="destructive" className="w-[180px]">
+          Clear
+        </Button>
+      )}
     </div>
   );
 };

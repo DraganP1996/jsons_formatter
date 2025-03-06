@@ -1,7 +1,7 @@
 "use client";
 
 import { CollapseAllIcon, ExpandAllIcon } from "@/icons";
-import { JsonEditor } from "webeditors-react";
+import { JsonEditor, XmlEditor } from "webeditors-react";
 import { Button } from "../ui/button";
 import { useRef } from "react";
 
@@ -12,6 +12,7 @@ export type EditorConfiguration = {
   mode?: EditorModes;
   theme: string;
   readonly?: boolean;
+  id: string;
 };
 
 export type EditorEvents = {
@@ -20,19 +21,20 @@ export type EditorEvents = {
 
 export type EditorProps = EditorConfiguration & EditorEvents;
 
-type EditorModes = "json" | "text";
+type EditorModes = "json" | "text" | "xml" | "yaml";
 
 export const Editor = ({
+  id,
   value,
   isReady,
-  tabSize = 2,
   mode = "json",
   theme,
   readonly = false,
   onChange,
 }: EditorProps) => {
   const editorRef = useRef<HTMLJsonEditorElement>(null);
-  console.log({ value, tabSize, mode });
+  const showActionsPanel = mode !== "text";
+  const showFooter = mode !== "text";
 
   const handleFoldAll = () => {
     if (!editorRef.current) return;
@@ -46,30 +48,57 @@ export const Editor = ({
     editorRef.current.unfoldAll();
   };
 
+  const renderPanelActions = () => {
+    return (
+      <div slot="panel" className="flex flex-row p-1">
+        <Button variant="ghost" className="p-2" onClick={handleFoldAll}>
+          <CollapseAllIcon />
+        </Button>
+        <Button variant="ghost" className="p-2" onClick={handleUnfoldAll}>
+          <ExpandAllIcon />
+        </Button>
+      </div>
+    );
+  };
+
+  const editorProps = {
+    id,
+    ref: editorRef,
+    theme,
+    value,
+    readonly,
+    onEditorChange: onChange,
+    footerConfig: {
+      backgroundColor: "oklch(0.809 0.105 251.813)",
+      color: "black",
+    },
+    showActionsPanel,
+    showFooter,
+  };
+
+  const renderEditor = () => {
+    switch (mode) {
+      case "json":
+      case "text": {
+        return (
+          <JsonEditor {...editorProps} mode={mode}>
+            {showActionsPanel && renderPanelActions()}
+          </JsonEditor>
+        );
+      }
+      case "xml": {
+        return <XmlEditor {...editorProps}>{showActionsPanel && renderPanelActions()}</XmlEditor>;
+      }
+
+      default:
+        break;
+    }
+  };
+
   return (
-    isReady && (
+    true && (
       <div className="max-h-[1000px] overflow-hidden m-2 rounded-xl shadow-sm shadow-slate-400">
-        <JsonEditor
-          ref={editorRef}
-          theme={theme}
-          value={value}
-          readonly={readonly}
-          onEditorChange={onChange}
-          footerConfig={{
-            backgroundColor: "oklch(0.809 0.105 251.813)",
-            color: "black",
-          }}
-          mode={mode}
-        >
-          <div slot="panel" className="flex flex-row p-1">
-            <Button variant="ghost" className="p-2" onClick={handleFoldAll}>
-              <CollapseAllIcon />
-            </Button>
-            <Button variant="ghost" className="p-2" onClick={handleUnfoldAll}>
-              <ExpandAllIcon />
-            </Button>
-          </div>
-        </JsonEditor>
+        {isReady ? renderEditor() : <textarea defaultValue="Placeholder for the editor" />}
       </div>
     )
   );

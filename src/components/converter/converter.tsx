@@ -5,7 +5,7 @@ import { ThreeColumnsLayout } from "../layout";
 import { useTabSize } from "@/hook/useTabSize";
 import { TabSizes } from "@/types";
 import { Editor, EditorConfiguration } from "../editor";
-import { BeautifierControls } from "../controls";
+import { ControlsConfig, ConvertControls } from "../controls";
 
 export type ConverterEditorConfiguration = Omit<
   EditorConfiguration,
@@ -21,6 +21,7 @@ export type ConverterProps = {
   allowTabSizeChange?: boolean;
   initialTabSize: TabSizes;
   configurations: ConverterEditorConfigurations;
+  converterControlsConfig: ControlsConfig;
   sourceChangeFn: SourceChangeFn;
 };
 
@@ -29,6 +30,7 @@ export const Converter = ({
   sourceChangeFn,
   initialTabSize,
   allowTabSizeChange = false,
+  converterControlsConfig,
 }: ConverterProps) => {
   const { tabSize, setTabSize } = useTabSize(initialTabSize);
 
@@ -48,6 +50,7 @@ export const Converter = ({
   return (
     <ThreeColumnsLayout>
       <Editor
+        id={configurations[0].id}
         isReady={isReadyToLoadEditor}
         value={source}
         theme={theme}
@@ -56,14 +59,16 @@ export const Converter = ({
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onChange={(val) => handleSourceChange((val as any).detail as string, tabSize)}
       />
-      <BeautifierControls
+      <ConvertControls
         tabSize={tabSize}
         theme={theme}
         changeTabSize={handleTabSizeChange}
         changeTheme={setTheme}
+        {...converterControlsConfig}
         onUrlConversion={() => {}}
       />
       <Editor
+        id={configurations[0].id}
         isReady={isReadyToLoadEditor}
         value={result}
         theme={theme}
