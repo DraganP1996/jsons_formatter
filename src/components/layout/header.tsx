@@ -8,6 +8,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "../ui";
+import { PAGES_CONFIG } from "@/app/config";
+import { PageKeys } from "@/app/types";
 
 export const Header = () => {
   return (
@@ -19,36 +21,15 @@ export const Header = () => {
             <NavigationMenuTrigger> Tools </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid grid-cols-2 gap-4 p-2 md:w-[200px] lg:w-[270px] lg:grid-cols-[.75fr_1fr] text-sm">
-                <Link href="/string-to-json" title="Introduction" className="leading-4">
-                  String to JSON
-                </Link>
-                <Link href="/json-to-string" title="Installation" className="leading-4">
-                  JSON to string
-                </Link>
-                <Link href="/json-beautify" title="Typography" className="leading-4">
-                  JSON Beautify
-                </Link>
-                <Link href="/json-minify" title="Typography" className="leading-4">
-                  JSON Minify
-                </Link>
-                <Link href="/csv-to-json" className="leading-4">
-                  JSON to CSV conversion
-                </Link>
-                <Link href="/json-to-csv" className="leading-4">
-                  CSV to JSON conversion
-                </Link>
-                <Link href="/json-to-yaml" className="leading-4">
-                  JSON to YAML conversion
-                </Link>
-                <Link href="/yaml-to-json" className="leading-4">
-                  YAML to JSON conversion
-                </Link>
-                <Link href="/json-to-xml" className="leading-4">
-                  JSON to XML conversion
-                </Link>
-                <Link href="/xml-to-json" className="leading-4">
-                  XML to JSON conversion
-                </Link>
+                {Object.keys(PAGES_CONFIG).map((pageKey: string) => (
+                  <Link
+                    key={`header_nav_${PAGES_CONFIG[pageKey as PageKeys].path}`}
+                    href={PAGES_CONFIG[pageKey as PageKeys].path}
+                    title={PAGES_CONFIG[pageKey as PageKeys].name}
+                  >
+                    {PAGES_CONFIG[pageKey as PageKeys].name}
+                  </Link>
+                ))}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>

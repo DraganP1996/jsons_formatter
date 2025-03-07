@@ -22,7 +22,8 @@
     "react-dom": "^18.0.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7",
-    "webeditors-react": "0.0.4"
+    "webeditors-react": "0.0.4",
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,10 +1,4 @@
-"use client";
-
-import { useCallback } from "react";
-import { Converter, ConverterEditorConfigurations } from "../converter";
-import { ControlsConfig } from "../controls";
-
-const mockJSON = [
+export const standardMock = [
   {
     id: 0,
     name: "Elijah",
@@ -243,44 +237,98 @@ const mockJSON = [
   },
 ];
 
-const converterControlsConfig: ControlsConfig = {
-  showTabSizeControl: true,
-  showUploadControl: true,
-  showThemeControl: true,
-  showConvertToControl: true,
-  showCreateLinkControl: true,
-  showDownloadControl: true,
-  showClearControl: true,
+export const mockXML = `<catalog>
+<product description="Cardigan Sweater" product_image="cardigan.jpg">
+   <catalog_item gender="Men's">
+      <item_number>QWZ5671</item_number>
+      <price>39.95</price>
+      <size description="Medium">
+         <color_swatch image="red_cardigan.jpg">Red</color_swatch>
+         <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
+      </size>
+      <size description="Large">
+         <color_swatch image="red_cardigan.jpg">Red</color_swatch>
+         <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
+      </size>
+   </catalog_item>
+   <catalog_item gender="Women's">
+      <item_number>RRX9856</item_number>
+      <price>42.50</price>
+      <size description="Small">
+         <color_swatch image="red_cardigan.jpg">Red</color_swatch>
+         <color_swatch image="navy_cardigan.jpg">Navy</color_swatch>
+         <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
+      </size>
+      <size description="Medium">
+         <color_swatch image="red_cardigan.jpg">Red</color_swatch>
+         <color_swatch image="navy_cardigan.jpg">Navy</color_swatch>
+         <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
+         <color_swatch image="black_cardigan.jpg">Black</color_swatch>
+      </size>
+      <size description="Large">
+         <color_swatch image="navy_cardigan.jpg">Navy</color_swatch>
+         <color_swatch image="black_cardigan.jpg">Black</color_swatch>
+      </size>
+      <size description="Extra Large">
+         <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
+         <color_swatch image="black_cardigan.jpg">Black</color_swatch>
+      </size>
+   </catalog_item>
+</product>
+</catalog>`;
+
+export const jsonYamlMock = {
+  apiVersion: "apps/v1",
+  kind: "Deployment",
+  metadata: {
+    name: "nginx-deployment",
+  },
+  spec: {
+    selector: {
+      matchLabels: {
+        app: "nginx",
+      },
+    },
+    replicas: 2,
+    template: {
+      metadata: {
+        labels: {
+          app: "nginx",
+        },
+      },
+      spec: {
+        containers: [
+          {
+            name: "nginx",
+            image: "nginx:1.14.2",
+            ports: [
+              {
+                containerPort: 80,
+              },
+            ],
+          },
+        ],
+      },
+    },
+  },
 };
 
-export const JSONMinifyPageLayout = () => {
-  const configurations: ConverterEditorConfigurations = {
-    0: {
-      id: "json_editor_origin_item",
-      value: JSON.stringify(mockJSON, null, 2),
-      mode: "json",
-      readonly: false,
-    },
-    1: {
-      id: "json_editor_result_item",
-      value: JSON.stringify(mockJSON, null, 0),
-      mode: "json",
-      readonly: true,
-    },
-  };
-
-  const sourceChangeFn = useCallback(
-    (value: string) => JSON.stringify(JSON.parse(value), null, 0),
-    []
-  );
-
-  return (
-    <Converter
-      configurations={configurations}
-      sourceChangeFn={sourceChangeFn}
-      allowTabSizeChange
-      converterControlsConfig={converterControlsConfig}
-      initialTabSize={0}
-    />
-  );
-};
+export const mockYAML = `apiVersion: apps/v1
+kind: Deployment
+metadata:  
+  name: nginx-deployment
+spec:  
+  selector:    
+    matchLabels:      
+      app: nginx  
+  replicas: 2 # tells deployment to run 2 pods matching the template  
+  template:    
+    metadata:      
+      labels:        
+        app: nginx    
+    spec:      
+      containers:      
+      - name: nginx        
+        image: nginx:1.14.2        
+        ports:        
+        - containerPort: 80`;

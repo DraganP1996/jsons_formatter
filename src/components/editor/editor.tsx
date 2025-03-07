@@ -1,7 +1,7 @@
 "use client";
 
 import { CollapseAllIcon, ExpandAllIcon } from "@/icons";
-import { JsonEditor, XmlEditor } from "webeditors-react";
+import { JsonEditor, XmlEditor, YamlEditor } from "webeditors-react";
 import { Button } from "../ui/button";
 import { useRef } from "react";
 
@@ -88,6 +88,11 @@ export const Editor = ({
       }
       case "xml": {
         return <XmlEditor {...editorProps}>{showActionsPanel && renderPanelActions()}</XmlEditor>;
+      }
+      case "yaml": {
+        return (
+          <YamlEditor {...editorProps}>{showActionsPanel && renderPanelActions()} </YamlEditor>
+        );
       }
 
       default:

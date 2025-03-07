@@ -18,7 +18,6 @@ export type ConverterEditorConfigurations = {
 };
 
 export type ConverterProps = {
-  allowTabSizeChange?: boolean;
   initialTabSize: TabSizes;
   configurations: ConverterEditorConfigurations;
   converterControlsConfig: ControlsConfig;
@@ -29,7 +28,6 @@ export const Converter = ({
   configurations,
   sourceChangeFn,
   initialTabSize,
-  allowTabSizeChange = false,
   converterControlsConfig,
 }: ConverterProps) => {
   const { tabSize, setTabSize } = useTabSize(initialTabSize);
@@ -42,7 +40,7 @@ export const Converter = ({
     });
 
   const handleTabSizeChange = (tabSize: TabSizes) => {
-    if (!allowTabSizeChange) return;
+    if (!converterControlsConfig.showTabSizeControl) return;
     setTabSize(tabSize);
     handleSourceChange(source, tabSize);
   };
