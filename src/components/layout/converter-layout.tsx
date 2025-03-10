@@ -9,11 +9,13 @@ export const ConverterLayout = ({ path }: { path: string }) => {
   const configuration: PageConfiguration = PAGES_CONFIG[pageKey as PageKeys];
 
   return (
-    <Converter
-      configurations={configuration.converterConfig}
-      sourceChangeFn={configuration.sourceChangeFn}
-      initialTabSize={2}
-      converterControlsConfig={configuration.controlsConfig}
-    />
+    <div className="flex flex-col">
+      <Converter
+        configurations={configuration.converterConfig}
+        sourceChangeFn={configuration.sourceChangeFn}
+        initialTabSize={2}
+        converterControlsConfig={configuration.controlsConfig}
+      />
+    </div>
   );
 };

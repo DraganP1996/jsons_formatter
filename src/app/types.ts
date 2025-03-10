@@ -1,17 +1,18 @@
 import { ControlsConfig } from "@/components/controls";
 import { ConverterEditorConfigurations } from "@/components/converter";
 import { SourceChangeFn } from "@/hook/useCommonConverterStuff";
+import { ReactNode } from "react";
 
 export const PAGE_PATHS = {
   //   csvToJson: "csv-to-json",
-  jsonBeatify: "json-beautify",
-  jsonMinify: "json-minify",
-  jsonToString: "json-to-string",
-  stringToJson: "string-to-json",
-  jsonToXml: "json-to-xml",
-  xmlToJson: "xml-to-json",
-  jsonToYaml: "json-to-yaml",
-  yamlToJson: "yaml-to-json",
+  jsonBeautify: "beautify-json-online",
+  jsonMinify: "json-minify-online",
+  jsonToString: "convert-json-to-string-online",
+  stringToJson: "convert-string-to-string-online",
+  jsonToXml: "online-json-to-xml-converter",
+  xmlToJson: "online-xml-to-json-converter",
+  jsonToYaml: "json-to-yaml-online-converter",
+  yamlToJson: "yaml-to-json-online-converter",
   //   jsonToCsv: "json-to-csv",
 } as const;
 
@@ -22,8 +23,11 @@ export type PageConfiguration = {
   path: PagePaths;
   order: number;
   name: string;
+  shortName: string;
+  description: string;
   controlsConfig: ControlsConfig;
   converterConfig: ConverterEditorConfigurations;
+  additionalContent?: ReactNode;
   sourceChangeFn: SourceChangeFn;
 };
 

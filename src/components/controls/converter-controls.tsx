@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/select";
 import { TabSizes } from "@/types";
 import { Button } from "../ui/button";
+import Link from "next/link";
+import { SwitchEditorsIcon } from "@/icons";
 
 const THEMES = [
   "amy",
@@ -112,6 +114,9 @@ export const ConvertControls = ({
 
   return (
     <div className="flex flex-row flex-wrap xl:flex-col items-center p-2 gap-2">
+      <Link href="">
+        <SwitchEditorsIcon />
+      </Link>
       {showUploadControl && <Button className="w-[180px]">Upload data</Button>}
       {showThemeControl && themeSelect}
       {showTabSizeControl && changeTabSize && tabSizeSelect}
