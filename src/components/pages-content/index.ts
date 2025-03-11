@@ -1,3 +1,2 @@
-export * from "./json-to-xml-additional";
 export * from "./additonal-info-section";
-export * from "./json-beautify-additional";
+export * from "./converter-additional-content";

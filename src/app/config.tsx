@@ -5,7 +5,9 @@ import { PAGE_PATHS, PagesDefinition } from "./types";
 import { jsonYamlMock, mockXML, mockYAML, standardMock } from "./mock";
 import { TabSizes } from "@/types";
 import { ControlsConfig } from "@/components/controls";
-import { JsonBeautifyAddionalContent, JsonToXmlAdditional } from "@/components/pages-content";
+import { ConverterAdditionalContent } from "@/components/pages-content";
+
+import { Posts } from "./posts";
 
 const showAllControls: ControlsConfig = {
   showTabSizeControl: true,
@@ -50,7 +52,11 @@ export const PAGES_CONFIG: PagesDefinition = {
         ? JSON.stringify(JSON.parse(value), null, tabSize)
         : JSON.stringify(JSON.parse(value));
     },
-    additionalContent: JsonBeautifyAddionalContent(),
+    additionalContent: (
+      <ConverterAdditionalContent>
+        <Posts.JsonBeautify />
+      </ConverterAdditionalContent>
+    ),
   },
   jsonMinify: {
     name: "Json Minify Online",
@@ -75,6 +81,11 @@ export const PAGES_CONFIG: PagesDefinition = {
       },
     },
     sourceChangeFn: (value: string) => JSON.stringify(JSON.parse(value), null, 0),
+    additionalContent: (
+      <ConverterAdditionalContent>
+        <Posts.JsonBeautify />
+      </ConverterAdditionalContent>
+    ),
   },
   jsonToString: {
     name: "Json to String Online Converter",
@@ -105,6 +116,11 @@ export const PAGES_CONFIG: PagesDefinition = {
     sourceChangeFn: (value: string) => {
       return JSON.stringify(JSON.stringify(JSON.parse(value)));
     },
+    additionalContent: (
+      <ConverterAdditionalContent>
+        <Posts.JsonBeautify />
+      </ConverterAdditionalContent>
+    ),
   },
   stringToJson: {
     name: "String to Json Online Converter",
@@ -141,6 +157,11 @@ export const PAGES_CONFIG: PagesDefinition = {
 
       return formattedValue;
     },
+    additionalContent: (
+      <ConverterAdditionalContent>
+        <Posts.JsonBeautify />
+      </ConverterAdditionalContent>
+    ),
   },
   jsonToXml: {
     name: "Json to XML Online Converter",
@@ -168,10 +189,14 @@ export const PAGES_CONFIG: PagesDefinition = {
         readonly: true,
       },
     },
-    additionalContent: JsonToXmlAdditional(),
     sourceChangeFn: (value: string) => {
       return xmlBuilder.build(JSON.parse(value));
     },
+    additionalContent: (
+      <ConverterAdditionalContent>
+        <Posts.JsonBeautify />
+      </ConverterAdditionalContent>
+    ),
   },
   xmlToJson: {
     name: "XML to Json Online Converter",
@@ -208,6 +233,11 @@ export const PAGES_CONFIG: PagesDefinition = {
 
       return formattedValue;
     },
+    additionalContent: (
+      <ConverterAdditionalContent>
+        <Posts.JsonBeautify />
+      </ConverterAdditionalContent>
+    ),
   },
   jsonToYaml: {
     name: "Json to YAML Online Converter",
@@ -221,6 +251,11 @@ export const PAGES_CONFIG: PagesDefinition = {
       showTabSizeControl: false,
       showDownloadControl: false,
     },
+    additionalContent: (
+      <ConverterAdditionalContent>
+        <Posts.JsonBeautify />
+      </ConverterAdditionalContent>
+    ),
     converterConfig: {
       0: {
         id: "json_editor_origin_item",
@@ -279,5 +314,10 @@ export const PAGES_CONFIG: PagesDefinition = {
         return "";
       }
     },
+    additionalContent: (
+      <ConverterAdditionalContent>
+        <Posts.JsonBeautify />
+      </ConverterAdditionalContent>
+    ),
   },
 } as const;

@@ -3,15 +3,25 @@
 import { ReactNode, useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ReactMarkdown from "react-markdown";
 
 type PanelProps = {
   initialState: boolean;
-  heading: ReactNode;
+  heading?: ReactNode;
+  headingMarkdown: string;
+  headerClass?: string;
   children: ReactNode;
   wrapperClassName?: string;
 };
 
-export const Panel = ({ initialState, heading, children, wrapperClassName }: PanelProps) => {
+export const Panel = ({
+  initialState,
+  heading,
+  children,
+  wrapperClassName,
+  headingMarkdown,
+  headerClass,
+}: PanelProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialState);
 
   const handlePanelClick = () => {
@@ -29,7 +39,10 @@ export const Panel = ({ initialState, heading, children, wrapperClassName }: Pan
         className="flex flex-row justify-between items-center cursor-pointer"
         onClick={handlePanelClick}
       >
-        {heading}
+        <div className={cn(headerClass)}>
+          {headingMarkdown && <ReactMarkdown>{headingMarkdown}</ReactMarkdown>}
+          {heading && heading}
+        </div>
         {isOpen ? <ChevronDown /> : <ChevronRight />}
       </div>
       {isOpen && <div className=""> {children} </div>}
