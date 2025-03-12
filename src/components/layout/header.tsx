@@ -19,7 +19,7 @@ export const Header = () => {
         <NavigationMenuList className="flex flex-row justify-between w-full p-2">
           <div className="">
             <NavigationMenuItem
-              className=" text-3xl text-black"
+              className="text-3xl text-black"
               style={{ fontFamily: "var(--font-bungee_shade), sans-serif" }}
             >
               <Link href="/">JSONs Formatter</Link>
@@ -43,29 +43,11 @@ export const Header = () => {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="" legacyBehavior passHref className="">
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), "shadow-md bg-white")}
-                >
-                  Learn
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
               <Link href="" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), "shadow-md bg-white")}
                 >
-                  FAQ
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), "shadow-md bg-white")}
-                >
-                  Contact
+                  Documentation
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
@@ -75,6 +57,15 @@ export const Header = () => {
                   className={cn(navigationMenuTriggerStyle(), "shadow-md bg-white")}
                 >
                   About
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={cn(navigationMenuTriggerStyle(), "shadow-md bg-white")}
+                >
+                  Contact
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>

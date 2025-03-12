@@ -1,0 +1,141 @@
+import { Panel } from "../components/ui/panel.tsx";
+import { AdditionalInfoSection } from "../components/pages-content/additonal-info-section.tsx";
+import { FaqSection } from "../components/pages-content/faq-section.tsx";
+
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## A brief introduction to the JSON to YAML converter tool"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    YAML and JSON are two formats used for data serialization that facilitate human-readable data exchange. They standardize the way 
+    data is formatted for transfer between software applications, ensuring that the text is also comprehensible to humans. 
+    Both formats organize data in key-value pairs. 
+
+    Although YAML might seem like a superior option due to its data typing and user-friendly format, JSON is generally favored
+    for its cross-compatibility. This preference arises from the fact that numerous applications and services are already 
+    equipped to parse JSON data.
+
+    Conversely, YAML has established a significant foothold in specific computing domains, largely due to its readability and 
+    ability to include comments. Importantly, YAML serves as the main data serialization format for configuration files in 
+    various automation, DevOps, and infrastructure as code (IaC) tools and services. For example, it is frequently utilized in Docker and Kubernetes configurations.
+
+    This tool enables the **immediate conversion of valid JSON values into a YAML format**.
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## What features does this tool offer?"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    - **Instant YAML conversion**: When you start entering or pasting content into the left editor, the right editor will show 
+    the corresponding YAML output generated from the input JSON..
+
+    - **Error detection**: If there are any errors in the JSON source you
+    provide, the tool will lint your JSON, presenting a list of detailed explanations
+    for each error, enabling you to resolve the issues effectively.
+
+    - **Customization**: The tool includes various customization features,
+    such as adjustable user interface settings for the editors, the ability to upload
+    data from a file on your machine for beautification, and customizable tab sizes.
+    Additional customization options are planned for future update.
+
+    - **Upload Data**: You can choose a JSON file from your device, and it
+    will be automatically beautified.
+
+    - **Download**: You have the option to download the formatted result if you would like to share the YAML output.
+
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## Common applications"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    The conversion of JSON to YAML is not a frequent requirement; however, there are specific scenarios where this tool proves 
+    to be highly beneficial.
+
+    For instance, numerous modern container orchestration and deployment tools, such as Kubernetes and Docker Compose, 
+    utilize YAML for their configuration files. In cases where configurations are in JSON format, employing this tool can 
+    facilitate a quicker conversion process and help mitigate potential errors.
+
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## How does it work?"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    Our converter is designed for ease of use:
+
+    1. Once you begin typing or pasting the JSON in the left editor, the converted result will be displayed in real time in the 
+    right editor.
+    2. If there are errors in the original input, the tool will be unable to complete the conversion process, requiring you to review and 
+    correct the errors.
+
+  </AdditionalInfoSection>
+</Panel>
+<FaqSection>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Is this tool available for free? "}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      The JSON to YAML tool will remain free for all users indefinitely. No account is required to access its features. 
+      While we intend to roll out certain functionalities exclusively for registered users, such as an ad-free experience 
+      and the ability to create links, the core formatting service will always be provided at no cost.
+    </AdditionalInfoSection>
+
+  </Panel>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Is it possible to customize the output result?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      We offer various options that enable the customization of results, including the ability to control tab size.
+    </AdditionalInfoSection>
+  </Panel>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### What happens if my JSON is invalid ?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      If the original JSON is invalid, the tool will be unable to complete the conversion process. In the left editor, 
+      an error icon will appear, and hovering over it will display the details of the errors identified in your original JSON.
+
+    </AdditionalInfoSection>
+
+  </Panel>
+    <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Will my JSON data be stored somewhere when I convert it?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      We do not retain any data that you enter or paste into the editor during the conversion process. However, there are 
+      two exceptions to this policy:
+
+      - When you download the result YAML, we temporarily store the information on our servers solely for the purpose of 
+      generating your output. Once the file is created for your download, it is promptly deleted.
+
+      - If you generate a link for a specific YAML, due to certain technical limitations regarding the storage of JSON data in the
+       URL, we save the JSON in our databases, assign it an ID, and utilize that ID to facilitate the creation of a link (this 
+       feature is currently under development).
+    </AdditionalInfoSection>
+
+  </Panel>
+</FaqSection>

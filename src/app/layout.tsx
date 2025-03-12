@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bungee_Shade, Electrolize, Roboto } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout";
+import { Footer } from "@/components/layout/footer";
 
 const electrolize = Electrolize({
   variable: "--font-electrolize",
@@ -59,13 +60,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${electrolize.variable} ${luckiestGuy.variable} ${anta.variable} font-anta antialiased h-[100vh] bg-slate-50`}
+        className={`${electrolize.variable} ${luckiestGuy.variable} ${anta.variable} font-anta antialiased min-h-[100vh] bg-slate-50`}
       >
         <Header />
-        <div className="h-[calc(100vh-55px)]">
-          <main className="h-[calc(100vh-55px)]">{children}</main>
-          <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
+        <div className="min-h-[calc(100vh-55px)]">
+          <main className="min-h-[calc(100vh-55px)]">{children}</main>
         </div>
+        <Footer />
       </body>
     </html>
   );

@@ -8,7 +8,7 @@ export const PAGE_PATHS = {
   jsonBeautify: "beautify-json-online",
   jsonMinify: "json-minify-online",
   jsonToString: "convert-json-to-string-online",
-  stringToJson: "convert-string-to-string-online",
+  stringToJson: "convert-string-to-json-online",
   jsonToXml: "online-json-to-xml-converter",
   xmlToJson: "online-xml-to-json-converter",
   jsonToYaml: "json-to-yaml-online-converter",

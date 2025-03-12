@@ -1,0 +1,138 @@
+import { Panel } from "../components/ui/panel.tsx";
+import { AdditionalInfoSection } from "../components/pages-content/additonal-info-section.tsx";
+import { FaqSection } from "../components/pages-content/faq-section.tsx";
+
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## Why use the YAML to JSON tool ?"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    Utilizing the YAML to JSON tool offers several advantages. Although YAML is designed for enhanced human readability, JSON is 
+    often the favored format among various programming languages and web APIs. By converting YAML to JSON, you enable your 
+    configuration or data files to be readily processed by applications and services.
+
+    Our tool facilitates the immediate conversion of any valid YAML into its corresponding JSON format.
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## What functionalities does this tool offer?"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    - **Instant JSON conversion**: When you start entering or pasting content into the left editor, the right editor will show 
+    the corresponding JSON output generated from the input YAML.
+
+    - **Error detection**: If there are any errors in the YAML source you
+    provide, the tool will lint your YAML, presenting a list of detailed explanations
+    for each error, enabling you to resolve the issues effectively.
+
+    - **Customization**: The tool includes various customization features,
+    such as adjustable user interface settings for the editors, the ability to upload
+    data from a file on your machine for conversion, and customizable tab sizes.
+    Additional customization options are planned for future update.
+
+    - **Upload Data**: You can choose a YAML file from your device, and it
+    will be automatically converted.
+
+    - **Download**: You have the option to download the formatted result if you would like to share the JSON output.
+
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## How does it work?"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    Our converter very simple to use:
+
+    1. Once you begin typing or pasting the YAML in the left editor, the converted result will be displayed in real time in the 
+    right editor.
+    2. If there are errors in the original input, the tool will be unable to complete the conversion process, requiring you to review and 
+    correct the errors.
+
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## Common Errors"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    YAML's expressiveness surpasses that of JSON, leading to the possibility that not all valid YAML inputs can be converted into 
+    valid JSON outputs without encountering errors or losing information. The following examples illustrate this point:
+
+    - **Complex Data Types**: YAML accommodates complex data types, such as timestamps, custom tags, or non-string keys, which 
+    lack direct counterparts in JSON. For example, a key in YAML may be a number or a boolean, whereas in JSON, all object keys 
+    must be strings.
+
+    - **Anchors and Aliases**: YAML features anchors and aliases that enable the reuse of nodes within the document. In contrast, 
+    JSON does not provide a native mechanism for representing these references.
+
+    - **Custom Tags**: YAML permits the use of custom data types through tags (e.g., !myType), a feature that JSON does not 
+    inherently support without additional processing.
+  </AdditionalInfoSection>
+</Panel>
+<FaqSection>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Is this tool available for free? "}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      The YAML to JSON tool will remain free for all users indefinitely. No account is required to access its features. 
+      While we intend to roll out certain functionalities exclusively for registered users, such as an ad-free experience 
+      and the ability to create links, the core formatting service will always be provided at no cost.
+    </AdditionalInfoSection>
+
+  </Panel>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Is it possible to customize the output result?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      We offer various options that enable the customization of results, including the ability to control tab size.
+    </AdditionalInfoSection>
+  </Panel>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### What happens if my YAML is invalid ?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      If the original YAML is invalid, the tool will be unable to complete the conversion process. In the left editor, 
+      an error icon will appear, and hovering over it will display the details of the errors identified in your original YAML.
+
+    </AdditionalInfoSection>
+
+  </Panel>
+    <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Will my data be stored somewhere when I convert it?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      We do not retain any data that you enter or paste into the editor during the conversion process. However, there are 
+      two exceptions to this policy:
+
+      - When you download the result JSON, we temporarily store the information on our servers solely for the purpose of 
+      generating your output. Once the file is created for your download, it is promptly deleted.
+
+      - If you generate a link for a specific JSON, due to certain technical limitations regarding the storage of JSON data in the
+       URL, we save the JSON in our databases, assign it an ID, and utilize that ID to facilitate the creation of a link (this 
+       feature is currently under development).
+    </AdditionalInfoSection>
+
+  </Panel>
+</FaqSection>

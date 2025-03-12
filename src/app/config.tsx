@@ -83,7 +83,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     sourceChangeFn: (value: string) => JSON.stringify(JSON.parse(value), null, 0),
     additionalContent: (
       <ConverterAdditionalContent>
-        <Posts.JsonBeautify />
+        <Posts.JsonMinify />
       </ConverterAdditionalContent>
     ),
   },
@@ -118,7 +118,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     },
     additionalContent: (
       <ConverterAdditionalContent>
-        <Posts.JsonBeautify />
+        <Posts.JsonToString />
       </ConverterAdditionalContent>
     ),
   },
@@ -159,7 +159,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     },
     additionalContent: (
       <ConverterAdditionalContent>
-        <Posts.JsonBeautify />
+        <Posts.StringToJson />
       </ConverterAdditionalContent>
     ),
   },
@@ -194,7 +194,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     },
     additionalContent: (
       <ConverterAdditionalContent>
-        <Posts.JsonBeautify />
+        <Posts.JsonToXml />
       </ConverterAdditionalContent>
     ),
   },
@@ -235,7 +235,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     },
     additionalContent: (
       <ConverterAdditionalContent>
-        <Posts.JsonBeautify />
+        <Posts.XmlToJson />
       </ConverterAdditionalContent>
     ),
   },
@@ -253,7 +253,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     },
     additionalContent: (
       <ConverterAdditionalContent>
-        <Posts.JsonBeautify />
+        <Posts.JsonToYaml />
       </ConverterAdditionalContent>
     ),
     converterConfig: {
@@ -316,7 +316,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     },
     additionalContent: (
       <ConverterAdditionalContent>
-        <Posts.JsonBeautify />
+        <Posts.YamlToJson />
       </ConverterAdditionalContent>
     ),
   },

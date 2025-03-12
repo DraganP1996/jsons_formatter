@@ -1,0 +1,143 @@
+import { Panel } from "../components/ui/panel.tsx";
+import { AdditionalInfoSection } from "../components/pages-content/additonal-info-section.tsx";
+import { FaqSection } from "../components/pages-content/faq-section.tsx";
+
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## Why convert a String to JSON?"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    In the realm of programming, the act of transform back a string into its original structure is referred to as **deserialization**. 
+    When it comes to JSON, there are several reasons to perform this conversion:
+
+    - **Data transmission**: Communication protocols such as HTTP primarily focus on transmitting text-based data across a network.
+    Developers frequently need to check the structure of a response prior to processing it in their code. This tool serves as an 
+    effective solution for such scenarios.
+    - **Storage**: Various storage systems are optimized for text handling. When extracting data from this type of database, it is
+    frequently essential to convert the string into JSON format to effectively utilize the information.
+    - **Use embedded JSON from URLs**: To effectively utilize the JSON from a URL, it is essential to deserialize it.
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## How does it work?"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    Utilizing this tool is quite straightforward:
+
+    1. Once you begin typing or pasting the String in the left editor, the converted result will be displayed in real time in the 
+    right editor.
+    2. If there are errors in the original input, the tool will be unable to serialize the result, requiring you to review and 
+    correct the errors. Ensure that you include text that can be transformed into JSON or, alternatively, address the errors 
+    systematically to attain the desired outcome.
+    3. Throughout the conversion to a JSON, special characters will be unescaped, meaning a backslash (\) will be removed before
+     them.
+
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## What features does this tool offer?"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    - **Instant String to JSON conversion**: As you begin typing or pasting content into
+    the left editor, the right editor will display the deserialized version of your JSON.
+
+    - **Error detection**: If there are any errors in the text source you
+    provide, the tool will lint your input, presenting a list of detailed explanations
+    for each error, enabling you to resolve the issues effectively.
+
+    - **Customization**: The tool includes various customization features,
+    such as adjustable user interface settings for the editors, the ability to upload
+    data from a file on your machine for beautification, etc.
+    Additional customization options are planned for future update.
+
+    - **Upload Data**: You can choose a JSON file from your device, and it
+    will be automatically converted to JSON.
+
+    - **Download**: You can download the formatted result if you wish to share it.
+
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## Common Errors"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    It is common for users of this tool to overlook that it functions as a **String to JSON converter**. Please ensure that the text 
+    entered in the left editor is enclosed in either single (') or double (") quotes; otherwise, the conversion will not be 
+    successful.
+
+    There are several prevalent mistakes that can result in invalid outputs or errors:
+
+    - **Improper Formatting**: The string may not adhere to JSON syntax. For example, JSON requires for keys and string values
+    to be enclosed in double quotes. A string formatted as ```{name: 'John'}``` or ```{'name': 'John'}``` is invalid due to the 
+    improper quoting of keys or values.
+
+    - **Trailing or Extra Commas**: If the string contains additional commas following the last element in an object or array, 
+    it will not be recognized as valid JSON. For instance: ```{ "name": "John", }```
+
+    - **Unescaped Characters**: Special characters within strings must be correctly escaped. If they are not (such as an 
+    unescaped newline or control character), the editor will generate an error, preventing successful conversion.
+
+    - **Incomplete or Malformed Data**: A string lacking essential braces, brackets, or quotes (for example, an incomplete 
+    object or array) will not convert correctly.
+
+    - **Plain Text That Isn’t JSON**: A string such as ```"Hello, world!"``` on its own does not qualify as valid JSON.
+  </AdditionalInfoSection>
+</Panel>
+<FaqSection>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Is this tool available for free? "}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      The String to JSON tool will remain free for all users indefinitely. No account is required to access its features. 
+      While we intend to roll out certain functionalities exclusively for registered users, such as an ad-free experience 
+      and the ability to create links, the core formatting service will always be provided at no cost.
+    </AdditionalInfoSection>
+
+  </Panel>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### What happens if my input is invalid ?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      If the original String is invalid (a textual input that it is not possible to convert to JSON), the tool will be unable to 
+      complete the conversion process. In the left editor, an error icon will appear, and hovering over it will display the 
+      details of the errors identified in your original JSON.
+    </AdditionalInfoSection>
+
+  </Panel>
+    <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Will my data be stored somewhere when I convert it?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      We do not retain any data that you enter or paste into the editor during the conversion process. However, there are 
+      two exceptions to this policy:
+
+      - When you download the minified JSON, we temporarily store the information on our servers solely for the purpose of 
+      generating your output. Once the file is created for your download, it is promptly deleted.
+
+      - If you generate a link for a specific JSON, due to certain technical limitations regarding the storage of JSON data in 
+      the URL, we save the JSON in our databases, assign it an ID, and utilize that ID to facilitate the creation of a
+       link (this feature is currently under development).
+    </AdditionalInfoSection>
+
+  </Panel>
+</FaqSection>

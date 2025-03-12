@@ -5,26 +5,26 @@ import { FaqSection } from "../components/pages-content/faq-section.tsx";
 <Panel
   initialState={true}
   wrapperClassName=""
-  headingMarkdown={"## Introduction to the JSON Beautify tool"}
+  headingMarkdown={"## Why use our JSON Minify tool?"}
   headerClass="text-2xl font-semibold font-electrolize"
 >
   <AdditionalInfoSection className="">
-    JSON, or **J**ava**S**cript **O**bject **N**otation, is a widely used format for data interchange between
-    applications. For a comprehensive overview of JSON, you may refer to this  [article](https://pages.github.com/).
+    JSON is recognized for its clarity, yet it presents certain challenges in data storage, especially concerning its size.
 
-    Over the past few decades, JSON has gained immense popularity due to its simplicity,
-    making it accessible for both humans and machines. While machines can easily process
-    JSON in any format, humans benefit from specific spacing and indentation conventions
-    that enhance the clarity of the content within a JSON file.
+    This is primarily due to its conversion of all data into text format, which can be inefficient. Moreover, the extensive use 
+    of quotation marks results in each string consuming two bytes. Additionally, JSON does not provide a standardized approach 
+    for schema operations. When multiple objects are serialized in a single message, the keys for each property must be repeated, 
+    even if they are the same across objects.
 
-    This tool is designed to swiftly **convert JSON files into a more accessible format**,
-    facilitating easier data reading, especially for developers. It improves the original
-    JSON by incorporating indentation and spacing, which greatly assists in debugging,
-    editing, and understanding complex JSON structures.
+    To address these issues, minification is necessary. Minification refers to the process of removing unnecessary characters 
+    from the original input without altering the output. This includes eliminating whitespace and newlines that are not critical. 
+    By decreasing the overall size, minification improves the efficiency of data transmission.
 
-    You can test the tool by substituting the content in the left editor with your JSON, and we will 
-    deliver a real-time conversion to a more refined format.
+    There are several advantages to minifying a JSON file, such as:
+    - Decreasing file size and improving loading times
+    - Creating more compact payloads for data exchange.
 
+    Our tool provides real-time and dependable minification of JSON files.
   </AdditionalInfoSection>
 </Panel>
 <Panel
@@ -34,8 +34,8 @@ import { FaqSection } from "../components/pages-content/faq-section.tsx";
   headerClass="text-2xl font-semibold font-electrolize"
 >
   <AdditionalInfoSection className="">
-    - **Instant JSON formatting**: As you begin typing or pasting content into
-    the left editor, the right editor will display the formatted versions of your JSON.
+    - **Instant JSON minification**: As you begin typing or pasting content into
+    the left editor, the right editor will display the minified version of your JSON.
 
     - **Error detection**: If there are any errors in the JSON source you
     provide, the tool will lint your JSON, presenting a list of detailed explanations
@@ -43,11 +43,11 @@ import { FaqSection } from "../components/pages-content/faq-section.tsx";
 
     - **Customization**: The tool includes various customization features,
     such as adjustable user interface settings for the editors, the ability to upload
-    data from a file on your machine for beautification, and customizable tab sizes.
+    data from a file on your machine, and customizable tab sizes.
     Additional customization options are planned for future update.
 
     - **Upload Data**: You can choose a JSON file from your device, and it
-    will be automatically beautified.
+    will be automatically minified.
 
     - **Download**: You can download the formatted result if you wish to share the formatted JSON.
 
@@ -61,7 +61,7 @@ import { FaqSection } from "../components/pages-content/faq-section.tsx";
     headerClass="text-xl font-semibold font-electrolize"
   >
     <AdditionalInfoSection className="">
-      The Json Beautify tool will remain free for all users indefinitely. No account is required to access its features. 
+      The JSON Minify tool will remain free for all users indefinitely. No account is required to access its features. 
       While we intend to roll out certain functionalities exclusively for registered users, such as an ad-free experience 
       and the ability to create links, the core formatting service will always be provided at no cost.
     </AdditionalInfoSection>
@@ -87,7 +87,6 @@ import { FaqSection } from "../components/pages-content/faq-section.tsx";
     <AdditionalInfoSection className="">
       If the original JSON is invalid, the tool will be unable to complete the conversion process. In the left editor, 
       an error icon will appear, and hovering over it will display the details of the errors identified in your original JSON.
-
     </AdditionalInfoSection>
 
   </Panel>
@@ -101,9 +100,12 @@ import { FaqSection } from "../components/pages-content/faq-section.tsx";
       We do not retain any data that you enter or paste into the editor during the conversion process. However, there are 
       two exceptions to this policy:
 
-      - When you download the formatted JSON, we temporarily store the information on our servers solely for the purpose of generating your output. Once the file is created for your download, it is promptly deleted.
+      - When you download the minified JSON, we temporarily store the information on our servers solely for the purpose of 
+      generating your output. Once the file is created for your download, it is promptly deleted.
 
-      - If you generate a link for a specific JSON, due to certain technical limitations regarding the storage of JSON data in the URL, we save the JSON in our databases, assign it an ID, and utilize that ID to facilitate the creation of a link (this feature is currently under development).
+      - If you generate a link for a specific JSON, due to certain technical limitations regarding the storage of JSON data in 
+      the URL, we save the JSON in our databases, assign it an ID, and utilize that ID to facilitate the creation of a
+       link (this feature is currently under development).
     </AdditionalInfoSection>
 
   </Panel>

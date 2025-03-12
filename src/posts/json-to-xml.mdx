@@ -1,0 +1,150 @@
+import { Panel } from "../components/ui/panel.tsx";
+import { AdditionalInfoSection } from "../components/pages-content/additonal-info-section.tsx";
+import { FaqSection } from "../components/pages-content/faq-section.tsx";
+
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## Introduction to the JSON to XML Converter"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    JSON serves as an open format for data interchange that is comprehensible to both humans and machines. In contrast, XML is a 
+    markup language that establishes guidelines for defining various types of data, utilizing tags to distinguish between data 
+    attributes and the actual content. Although both formats facilitate data exchange, JSON is recognized as the more modern, 
+    adaptable, and widely adopted choice.
+
+    In the current era of interconnected systems, the necessity for data sharing across different formats is prevalent. While 
+    JSON is favored for data interchange, numerous legacy systems and specific applications continue to depend on XML. Our JSON 
+    to XML Converter effectively addresses this need by enabling swift and precise transformation of JSON data into XML.
+
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## Typical applications in real-world scenarios"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    - **Compatibility Across Platforms**: Numerous enterprise applications, legacy systems, and particular APIs require data to 
+    be formatted in XML. By transforming JSON into XML, you can facilitate smooth integration between contemporary and 
+    traditional systems.
+
+    - **Improved Data Exchange**: XML presents a comprehensive structure with customizable tags and attributes, which can be 
+    advantageous for representing intricate data relationships. This transformation is particularly beneficial in sectors where 
+    XML is the prevailing standard, such as finance, healthcare, and government.
+
+    - **Uniform Data Format**: XML enforces stringent syntax regulations and accommodates features like namespaces, which can 
+    help eliminate ambiguities when sharing data across systems. Converting JSON to XML enables you to take advantage of these 
+    benefits without the need for manual data rewriting.
+
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## What features does this tool offer?"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    - **Instant XML conversion**: As you begin typing or pasting content into
+    the left editor, the right editor will display the formatted versions of your XML.
+
+    - **Error detection**: If there are any errors in the JSON source you
+    provide, the tool will lint your JSON, presenting a list of detailed explanations
+    for each error, enabling you to resolve the issues effectively.
+
+    - **Customization**: The tool includes various customization features,
+    such as adjustable user interface settings for the editors, the ability to upload
+    data from a file on your machine for beautification, and customizable tab sizes.
+    Additional customization options are planned for future update.
+
+    - **Upload Data**: You can choose a JSON file from your device, and it
+    will be automatically beautified.
+
+    - **Download**: You can download the formatted result if you wish to share the formatted XML.
+
+  </AdditionalInfoSection>
+</Panel>
+<Panel
+  initialState={true}
+  wrapperClassName=""
+  headingMarkdown={"## Common Errors"}
+  headerClass="text-2xl font-semibold font-electrolize"
+>
+  <AdditionalInfoSection className="">
+    Due the differences between the two formats not all valid JSON can be transformed into valid XML. Below are several examples 
+    illustrating this issue:
+
+    - **Keys Beginning with Numbers**: In JSON, keys may commence with numbers, whereas XML tags cannot. Consequently, when 
+    converting a JSON object that includes keys starting with numbers, the resulting XML will be invalid.
+
+    - **Unsupported Characters**: JSON keys can incorporate characters such as "!", which are not permissible in XML tags. 
+    Therefore, JSON inputs containing such characters will result in invalid XML.
+
+    - **Duplicate Keys**: While certain implementations of JSON permit duplicate keys, XML does not allow this. As a result, 
+    JSON objects with duplicate keys may yield unexpected XML outputs.
+
+    - **Data Types Lacking Direct XML Equivalents**: JSON values such as null or boolean types may not have a corresponding 
+    representation in XML leading to unexpected outputs in the converter.
+
+  </AdditionalInfoSection>
+</Panel>
+<FaqSection>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Is this tool available for free? "}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      The JSON to XML converter will remain free for all users indefinitely. No account is required to access its features. 
+      While we intend to roll out certain functionalities exclusively for registered users, such as an ad-free experience 
+      and the ability to create links, the core formatting service will always be provided at no cost.
+    </AdditionalInfoSection>
+
+  </Panel>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Is it possible to customize the output result?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      We offer various options that enable the customization of results, including the ability to control tab size.
+    </AdditionalInfoSection>
+
+  </Panel>
+  <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### What happens if my JSON is invalid ?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      If the original JSON is invalid, the tool will be unable to complete the conversion process. In the left editor, 
+      an error icon will appear, and hovering over it will display the details of the errors identified in your original JSON.
+    </AdditionalInfoSection>
+
+  </Panel>
+    <Panel
+    initialState={false}
+    wrapperClassName=""
+    headingMarkdown={"### Will my JSON data be stored somewhere when I convert it?"}
+    headerClass="text-xl font-semibold font-electrolize"
+  >
+    <AdditionalInfoSection className="">
+      We do not retain any data that you enter or paste into the editor during the conversion process. However, there are 
+      two exceptions to this policy:
+
+      - When you download the resulting XML, we temporarily store the information on our servers solely for the purpose of
+      generating your output. Once the file is created for your download, it is promptly deleted.
+
+      - If you generate a link for a specific XML, due to certain technical limitations regarding the storage of XML data 
+      in the URL, we save the JSON in our databases, assign it an ID, and utilize that ID to facilitate the creation of a link
+      (this feature is currently under development).
+    </AdditionalInfoSection>
+
+  </Panel>
+</FaqSection>
