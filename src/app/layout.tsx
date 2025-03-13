@@ -7,16 +7,19 @@ import { Footer } from "@/components/layout/footer";
 const electrolize = Electrolize({
   variable: "--font-electrolize",
   weight: ["400"],
+  subsets: ["latin"],
 });
 
 const luckiestGuy = Bungee_Shade({
   variable: "--font-bungee_shade",
   weight: "400",
+  subsets: ["latin"],
 });
 
 const anta = Roboto({
   variable: "--font-anta",
   weight: ["400"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {

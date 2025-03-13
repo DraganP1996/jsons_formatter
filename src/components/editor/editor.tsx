@@ -21,7 +21,7 @@ export type EditorEvents = {
 
 export type EditorProps = EditorConfiguration & EditorEvents;
 
-type EditorModes = "json" | "text" | "xml" | "yaml";
+export type EditorModes = "json" | "txt" | "xml" | "yaml";
 
 export const Editor = ({
   id,
@@ -33,8 +33,8 @@ export const Editor = ({
   onChange,
 }: EditorProps) => {
   const editorRef = useRef<HTMLJsonEditorElement>(null);
-  const showActionsPanel = mode !== "text";
-  const showFooter = mode !== "text";
+  const showActionsPanel = mode !== "txt";
+  const showFooter = mode !== "txt";
 
   const handleFoldAll = () => {
     if (!editorRef.current) return;
@@ -79,9 +79,9 @@ export const Editor = ({
   const renderEditor = () => {
     switch (mode) {
       case "json":
-      case "text": {
+      case "txt": {
         return (
-          <JsonEditor {...editorProps} mode={mode}>
+          <JsonEditor {...editorProps} mode={mode === "txt" ? "text" : "json"}>
             {showActionsPanel && renderPanelActions()}
           </JsonEditor>
         );

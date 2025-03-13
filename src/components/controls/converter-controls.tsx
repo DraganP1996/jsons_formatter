@@ -8,7 +8,7 @@ import {
 import { TabSizes } from "@/types";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { SwitchEditorsIcon } from "@/icons";
+import { ArrowRightLeft, DownloadIcon, LinkIcon, TrashIcon, UploadIcon } from "lucide-react";
 
 const THEMES = [
   "amy",
@@ -37,6 +37,7 @@ export type ControlsConfig = {
   showCreateLinkControl: boolean;
   showDownloadControl: boolean;
   showClearControl: boolean;
+  revertPath?: string;
 };
 
 type BeautifierControlsProps = {
@@ -45,6 +46,7 @@ type BeautifierControlsProps = {
   changeTabSize?: (tabSize: TabSizes) => void;
   changeTheme: (theme: string) => void;
   onUrlConversion: () => void;
+  onDownload?: () => void;
 } & ControlsConfig;
 
 export const ConvertControls = ({
@@ -57,9 +59,11 @@ export const ConvertControls = ({
   showCreateLinkControl,
   showDownloadControl,
   showClearControl,
+  revertPath,
   changeTabSize,
   changeTheme,
   onUrlConversion,
+  onDownload,
 }: BeautifierControlsProps) => {
   const handleValueChange = (value: string) => {
     const numericValue = +value;
@@ -71,7 +75,7 @@ export const ConvertControls = ({
 
   const themeSelect = (
     <Select onValueChange={changeTheme} value={theme}>
-      <SelectTrigger className="w-[180px] bg-white">
+      <SelectTrigger className="w-[120px] bg-white">
         <SelectValue placeholder="Editor theme" />
       </SelectTrigger>
       <SelectContent>
@@ -86,7 +90,7 @@ export const ConvertControls = ({
 
   const tabSizeSelect = (
     <Select onValueChange={handleValueChange} value={`${tabSize}`}>
-      <SelectTrigger className="w-[180px] bg-white">
+      <SelectTrigger className="w-[120px] bg-white">
         <SelectValue placeholder="Space Tab" />
       </SelectTrigger>
       <SelectContent>
@@ -101,7 +105,7 @@ export const ConvertControls = ({
 
   const convertTo = (
     <Select>
-      <SelectTrigger className="w-[180px] bg-white">
+      <SelectTrigger className="w-[120px] bg-white">
         <SelectValue placeholder="Convert to" />
       </SelectTrigger>
       <SelectContent>
@@ -112,26 +116,49 @@ export const ConvertControls = ({
     </Select>
   );
 
+  const revertLink = revertPath && (
+    <Link
+      href={revertPath}
+      className="w-[120px] flex flex-row items-center font-semibold justify-between bg-white rounded-lg px-2 py-1 shadow"
+    >
+      Switch <ArrowRightLeft width={"20px"} height={"20px"} />
+    </Link>
+  );
+
+  const uploadButton = showUploadControl && (
+    <Button className="w-[120px] flex flex-row items-center font-semibold">
+      Upload data <UploadIcon />
+    </Button>
+  );
+
+  const downloadBtn = showDownloadControl && (
+    <Button className="w-[120px] flex flex-row items-center font-semibold" onClick={onDownload}>
+      Download <DownloadIcon />
+    </Button>
+  );
+
+  const clearBtn = showClearControl && (
+    <Button variant="destructive" className="w-[120px] flex flex-row items-center font-semibold">
+      Clear <TrashIcon />
+    </Button>
+  );
+
+  const linkBtn = showCreateLinkControl && (
+    <Button variant="link" className="w-[120px] font-semibold" onClick={onUrlConversion}>
+      Create link <LinkIcon />
+    </Button>
+  );
+
   return (
     <div className="flex flex-row flex-wrap xl:flex-col items-center p-2 gap-2">
-      <Link href="">
-        <SwitchEditorsIcon />
-      </Link>
-      {showUploadControl && <Button className="w-[180px]">Upload data</Button>}
+      {revertLink}
+      {uploadButton}
       {showThemeControl && themeSelect}
       {showTabSizeControl && changeTabSize && tabSizeSelect}
       {showConvertToControl && convertTo}
-      {showCreateLinkControl && (
-        <Button variant="link" className="w-[180px]" onClick={onUrlConversion}>
-          Create link
-        </Button>
-      )}
-      {showDownloadControl && <Button className="w-[180px]"> Download </Button>}
-      {showClearControl && (
-        <Button variant="destructive" className="w-[180px]">
-          Clear
-        </Button>
-      )}
+      {linkBtn}
+      {downloadBtn}
+      {clearBtn}
     </div>
   );
 };

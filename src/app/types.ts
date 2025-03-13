@@ -25,6 +25,7 @@ export type PageConfiguration = {
   name: string;
   shortName: string;
   description: string;
+  keywords: string[];
   controlsConfig: ControlsConfig;
   converterConfig: ConverterEditorConfigurations;
   additionalContent?: ReactNode;

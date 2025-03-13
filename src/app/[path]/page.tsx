@@ -1,4 +1,8 @@
 import { Metadata } from "next";
+import Script from "next/script";
+
+import { WithContext, TechArticle } from "schema-dts";
+
 import { PAGE_PATHS, PageConfiguration, PageKeys, PagePaths } from "../types";
 import { ConverterLayout } from "@/components/layout/converter-layout";
 import { PAGES_CONFIG } from "../config";
@@ -22,6 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `${configuration.path}`,
     },
+    keywords: configuration.keywords,
     openGraph: {
       title: configuration.name,
       description: configuration.description,
@@ -35,10 +40,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: `JSONs Formatter | ${configuration.name}`,
       description: configuration.description,
-      // siteId: "1467726470533754880",
-      // creator: "@nextjs",
-      // creatorId: "1467726470533754880",
-      // images: ["https://nextjs.org/og.png"], // Must be an absolute URL
     },
     bookmarks: `https://jsonsformatter.com/${configuration.path}`,
   };
@@ -52,23 +53,68 @@ export async function generateStaticParams() {
   }));
 }
 
+export const dynamicParams = false;
+
 export default async function Page({ params }: PageProps) {
   const { path } = await params;
   const pageKey = Object.keys(PAGE_PATHS).find((key) => path === PAGE_PATHS[key as PageKeys])!;
   const configuration: PageConfiguration = PAGES_CONFIG[pageKey as PageKeys];
 
+  const jsonLd: WithContext<TechArticle> = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: configuration.name,
+    description: configuration.description,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://jsonsformatter.com/${configuration.path}`,
+    },
+    author: {
+      "@type": "Person",
+      name: "Dragan Petrovic",
+      url: "https://github.com/DraganP1996",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Dragan Petrovic",
+      url: "https://github.com/DraganP1996",
+    },
+    keywords: configuration.keywords,
+    about: {
+      "@type": "WebApplication",
+      name: configuration.shortName,
+      url: `https://jsonsformatter.com/${configuration.path}`,
+      browserRequirements: "Requires modern browsers (Chrome, Firefox, Safari)",
+      applicationCategory: "Utilities",
+      operatingSystem: "All",
+      offers: {
+        "@type": "Offer",
+        price: "0.00",
+        priceCurrency: "EUR",
+      },
+    },
+  };
+
   return (
-    <div className="flex flex-col gap-2">
-      <div className="px-4 pt-2">
-        <h1
-          className=" text-4xl text-center font-bold font-electrolize
-        "
-        >
-          {configuration.name}
-        </h1>
+    <>
+      <Script
+        id="json-formatter-structured-data"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="flex flex-col gap-2">
+        <div className="px-4 pt-2">
+          <h1
+            className=" text-4xl text-center font-bold font-electrolize
+      "
+          >
+            {configuration.name}
+          </h1>
+        </div>
+        <ConverterLayout path={path} />
+        {!!configuration?.additionalContent && configuration.additionalContent}
       </div>
-      <ConverterLayout path={path} />
-      {!!configuration?.additionalContent && configuration.additionalContent}
-    </div>
+    </>
   );
 }

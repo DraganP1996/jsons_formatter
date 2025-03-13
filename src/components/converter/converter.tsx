@@ -45,6 +45,21 @@ export const Converter = ({
     handleSourceChange(source, tabSize);
   };
 
+  const handleDownload = async () => {
+    const blob = new Blob([result], { type: configurations[1].mode });
+    const url = URL.createObjectURL(blob);
+    const fileName = `jsons_formatter-${new Date().toISOString().replace(/[:.]/g, "-")}.${configurations[1].mode}`;
+
+    const anchor = document.createElement("a");
+
+    anchor.href = url;
+    anchor.download = fileName;
+    anchor.click();
+
+    // Clean up the object URL
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <ThreeColumnsLayout>
       <Editor
@@ -64,6 +79,7 @@ export const Converter = ({
         changeTheme={setTheme}
         {...converterControlsConfig}
         onUrlConversion={() => {}}
+        onDownload={handleDownload}
       />
       <Editor
         id={configurations[0].id}
