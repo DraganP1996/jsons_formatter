@@ -2,8 +2,8 @@
 
 import { CollapseAllIcon, ExpandAllIcon } from "@/icons";
 import { JsonEditor, XmlEditor, YamlEditor } from "webeditors-react";
-import { Button } from "../ui/button";
 import { useRef } from "react";
+import { TooltipProvider, TooltipTrigger, TooltipContent, Tooltip } from "../ui/tooltip";
 
 export type EditorConfiguration = {
   value: string;
@@ -51,12 +51,32 @@ export const Editor = ({
   const renderPanelActions = () => {
     return (
       <div slot="panel" className="flex flex-row p-1">
-        <Button variant="ghost" className="p-2" onClick={handleFoldAll}>
-          <CollapseAllIcon />
-        </Button>
-        <Button variant="ghost" className="p-2" onClick={handleUnfoldAll}>
-          <ExpandAllIcon />
-        </Button>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger
+              className="p-2 hover:bg-white hover:text-black rounded"
+              onClick={handleFoldAll}
+            >
+              <CollapseAllIcon />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Fold all</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger
+              className="p-2 hover:bg-white hover:text-black rounded"
+              onClick={handleUnfoldAll}
+            >
+              <ExpandAllIcon />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Unfold all</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     );
   };

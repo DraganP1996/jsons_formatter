@@ -44,7 +44,7 @@ export const Header = () => {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="" legacyBehavior passHref>
+              <Link href="/documentation" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), "shadow-md bg-white")}
                 >
@@ -53,7 +53,7 @@ export const Header = () => {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="" legacyBehavior passHref>
+              <Link href="/about" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), "shadow-md bg-white")}
                 >
@@ -62,7 +62,7 @@ export const Header = () => {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="" legacyBehavior passHref>
+              <Link href="/contact" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), "shadow-md bg-white")}
                 >

@@ -14,6 +14,7 @@
     "@radix-ui/react-navigation-menu": "^1.2.5",
     "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",
+    "@radix-ui/react-tooltip": "^1.1.8",
     "@types/mdx": "^2.0.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -27,7 +28,7 @@
     "schema-dts": "^1.1.5",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7",
-    "webeditors-react": "0.0.9",
+    "webeditors-react": "0.0.106",
     "yaml": "^2.7.0"
   },
   "devDependencies": {
