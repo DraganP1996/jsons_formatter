@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Electrolize, Kumar_One_Outline, Roboto } from "next/font/google";
 
-import "./globals.css";
-import { Header } from "@/components/layout";
-import { Footer } from "@/components/layout/footer";
+import "../globals.css";
 
 const electrolize = Electrolize({
   variable: "--font-electrolize",
@@ -42,11 +40,9 @@ export default function RootLayout({
       <body
         className={`${electrolize.variable} ${kumar_one_outline.variable} ${anta.variable} font-anta antialiased min-h-[100vh] bg-white`}
       >
-        <Header />
-        <div className="min-h-[calc(100vh-55px)]">
-          <main className="min-h-[calc(100vh-55px)] flex flex-col p-2">{children}</main>
+        <div className="min-h-[100vh]">
+          <main className="min-h-[100vh] flex flex-col">{children}</main>
         </div>
-        <Footer />
       </body>
     </html>
   );

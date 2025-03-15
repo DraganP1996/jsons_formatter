@@ -3,9 +3,9 @@ import Script from "next/script";
 
 import { WithContext, TechArticle } from "schema-dts";
 
-import { PAGE_PATHS, PageConfiguration, PageKeys, PagePaths } from "../types";
+import { PAGE_PATHS, PageConfiguration, PageKeys, PagePaths } from "../../types";
 import { ConverterLayout } from "@/components/layout/converter-layout";
-import { PAGES_CONFIG } from "../config";
+import { PAGES_CONFIG } from "../../config";
 
 type PageProps = {
   params: Promise<{ path: string }>;

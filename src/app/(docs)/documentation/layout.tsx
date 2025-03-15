@@ -6,9 +6,9 @@ export default function DocumentationLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-row min-h-[90vh] p-2">
+    <div className="flex flex-row min-h-[100vh]">
       <DocNavigation />
-      <div className="flec flex-col flex-1 p-2">{children} </div>
+      <div className="flex flex-col flex-1 p-2">{children} </div>
     </div>
   );
 }
