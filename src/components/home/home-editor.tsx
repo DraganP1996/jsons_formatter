@@ -5,6 +5,7 @@ import { PAGES_CONFIG } from "@/app/config";
 
 export const HomeEditor = () => {
   const configuration = PAGES_CONFIG.jsonBeautify;
+
   return (
     <div className="flex flex-col">
       <h2 className="text-4xl font-electrolize font-bold text-center p-4">

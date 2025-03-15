@@ -1,8 +1,10 @@
 "use client";
 
-import { CollapseAllIcon, ExpandAllIcon } from "@/icons";
-import { JsonEditor, XmlEditor, YamlEditor } from "webeditors-react";
 import { useRef } from "react";
+
+import { JsonEditor, XmlEditor, YamlEditor } from "webeditors-react";
+
+import { CollapseAllIcon, ExpandAllIcon } from "@/icons";
 import { TooltipProvider, TooltipTrigger, TooltipContent, Tooltip } from "../ui/tooltip";
 
 export type EditorConfiguration = {
@@ -56,6 +58,7 @@ export const Editor = ({
             <TooltipTrigger
               className="p-2 hover:bg-white hover:text-black rounded"
               onClick={handleFoldAll}
+              aria-label="Fold All"
             >
               <CollapseAllIcon />
             </TooltipTrigger>
@@ -69,6 +72,7 @@ export const Editor = ({
             <TooltipTrigger
               className="p-2 hover:bg-white hover:text-black rounded"
               onClick={handleUnfoldAll}
+              aria-label="Unfold All"
             >
               <ExpandAllIcon />
             </TooltipTrigger>
@@ -121,10 +125,8 @@ export const Editor = ({
   };
 
   return (
-    true && (
-      <div className="max-h-[1000px] overflow-hidden m-2 rounded-xl shadow-sm shadow-slate-400">
-        {isReady ? renderEditor() : <textarea defaultValue="Placeholder for the editor" />}
-      </div>
-    )
+    <div className="h-[550px] lg:h-auto lg:max-h-[1000px] overflow-hidden m-2 rounded-xl shadow-sm shadow-slate-400">
+      {isReady ? renderEditor() : <textarea defaultValue="Placeholder for the editor" />}
+    </div>
   );
 };

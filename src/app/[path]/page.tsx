@@ -104,9 +104,9 @@ export default async function Page({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="flex flex-col gap-2">
-        <div className="px-4 pt-2">
+        <div className="px-4">
           <h1
-            className=" text-4xl text-center font-bold font-electrolize
+            className="text-2xl md:text-4xl text-center font-bold font-electrolize
       "
           >
             {configuration.name}

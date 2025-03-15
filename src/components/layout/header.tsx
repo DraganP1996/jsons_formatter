@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { MenuIcon } from "lucide-react";
+
 import {
+  Button,
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
@@ -20,12 +23,12 @@ export const Header = () => {
           <div className="">
             <NavigationMenuItem
               className="text-3xl text-black"
-              style={{ fontFamily: "var(--font-bungee_shade), sans-serif" }}
+              style={{ fontFamily: "var(--font-kumar_one_outline), sans-serif" }}
             >
               <Link href="/">JSONs Formatter</Link>
             </NavigationMenuItem>
           </div>
-          <div className="flex flex-row gap-2 relative">
+          <div className="flex-row gap-2 relative hidden lg:flex">
             <NavigationMenuItem>
               <NavigationMenuTrigger className="shadow-md bg-white"> Tools </NavigationMenuTrigger>
               <NavigationMenuContent className="">
@@ -70,6 +73,11 @@ export const Header = () => {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+          </div>
+          <div className="flex lg:hidden">
+            <Button variant="secondary" aria-label="Mobile navigation menu">
+              <MenuIcon />
+            </Button>
           </div>
         </NavigationMenuList>
       </NavigationMenu>

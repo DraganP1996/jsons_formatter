@@ -1,9 +1,11 @@
 "use client";
 
+import { useCallback } from "react";
+
 import { SourceChangeFn, useCommonConverterStuff } from "@/hook/useCommonConverterStuff";
-import { ThreeColumnsLayout } from "../layout";
-import { useTabSize } from "@/hook/useTabSize";
 import { TabSizes } from "@/types";
+import { useTabSize } from "@/hook/useTabSize";
+import { ThreeColumnsLayout } from "../layout";
 import { Editor, EditorConfiguration } from "../editor";
 import { ControlsConfig, ConvertControls } from "../controls";
 
@@ -39,13 +41,16 @@ export const Converter = ({
       sourceChangeFn,
     });
 
-  const handleTabSizeChange = (tabSize: TabSizes) => {
-    if (!converterControlsConfig.showTabSizeControl) return;
-    setTabSize(tabSize);
-    handleSourceChange(source, tabSize);
-  };
+  const handleTabSizeChange = useCallback(
+    (tabSize: TabSizes) => {
+      if (!converterControlsConfig.showTabSizeControl) return;
+      setTabSize(tabSize);
+      handleSourceChange(source, tabSize);
+    },
+    [converterControlsConfig.showTabSizeControl, handleSourceChange, setTabSize, source]
+  );
 
-  const handleDownload = async () => {
+  const handleDownload = useCallback(async () => {
     const blob = new Blob([result], { type: configurations[1].mode });
     const url = URL.createObjectURL(blob);
     const fileName = `jsons_formatter-${new Date().toISOString().replace(/[:.]/g, "-")}.${configurations[1].mode}`;
@@ -58,7 +63,11 @@ export const Converter = ({
 
     // Clean up the object URL
     URL.revokeObjectURL(url);
-  };
+  }, [configurations, result]);
+
+  const handleReset = useCallback(() => {
+    handleSourceChange("");
+  }, [handleSourceChange]);
 
   return (
     <ThreeColumnsLayout>
@@ -80,6 +89,7 @@ export const Converter = ({
         {...converterControlsConfig}
         onUrlConversion={() => {}}
         onDownload={handleDownload}
+        onReset={handleReset}
       />
       <Editor
         id={configurations[0].id}

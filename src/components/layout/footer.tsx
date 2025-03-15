@@ -1,12 +1,13 @@
-import { PAGES_CONFIG } from "@/app/config";
 import { GithubIcon } from "lucide-react";
 import Link from "next/link";
+
+import { PAGES_CONFIG } from "@/app/config";
 
 export const Footer = () => {
   return (
     <footer className="flex flex-col gap-2 flex-wrap justify-center bg-orange-100 mt-4 w-full border-t-4 border-orange-400">
-      <div className="grid grid-cols-[4fr,1fr,1fr] gap-4 min-w-[900px] p-4 ">
-        <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-[4fr,1fr,1fr] gap-4 lg:min-w-[900px] p-4 ">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <div className="flex flex-col gap-2">
             <h6 className="font-bold text-lg"> JSON </h6>
             <Link href={PAGES_CONFIG.jsonBeautify.path} className="text-sm text-stone-700">

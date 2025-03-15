@@ -58,7 +58,7 @@ export default {
       },
       fontFamily: {
         electrolize: "var(--font-electrolize), sans-serif",
-        bungee_shade: "var(--font-bungee_shade), cursive",
+        kumar_one_outline: "var(--kumar_one_outline), cursive",
         anta: "var(--font-anta), sans-serif",
       },
     },

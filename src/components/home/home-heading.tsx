@@ -8,7 +8,7 @@ export const HomeHeading = () => {
       <HomePost
         components={{
           h1: ({ children }: { children: ReactNode }) => (
-            <h1 className="text-6xl text-orange-500 font-electrolize font-bold mb-2">
+            <h1 className="text-4xl md:text-6xl text-orange-500 font-electrolize font-bold mb-2">
               {" "}
               {children}{" "}
             </h1>
