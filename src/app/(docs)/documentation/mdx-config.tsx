@@ -7,6 +7,9 @@ export const HeaderComponents = {
   h2: ({ children }: { children: ReactNode }) => (
     <h2 className="text-4xl font-bold font-electrolize mt-6">{children} </h2>
   ),
+  h3: ({ children }: { children: ReactNode }) => (
+    <h3 className="text-3xl font-bold font-electrolize mt-6">{children} </h3>
+  ),
 };
 
 export const GeneralComponents = {

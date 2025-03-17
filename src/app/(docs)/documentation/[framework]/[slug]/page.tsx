@@ -1,6 +1,7 @@
 import { DOC_PAGE_CONFIG } from "@/pages-configurations";
 import { HeaderComponents } from "../../mdx-config";
 import { Framework } from "@/types";
+import { CodeSample } from "./code-sample";
 
 type PageProps = {
   params: Promise<{ slug: string; framework: Framework }>;
@@ -22,7 +23,12 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Post components={HeaderComponents} />
+      <Post
+        components={{
+          ...HeaderComponents,
+          code: CodeSample,
+        }}
+      />
     </>
   );
 }

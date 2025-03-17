@@ -25,7 +25,7 @@ export default async function DocumentationLayout({
   return (
     <div className="flex flex-row min-h-[100vh]">
       <DocNavigation libraries={libraries} />
-      <div className="flex flex-col flex-1 p-4 gap-2">
+      <div className="flex flex-col flex-1 py-4 px-14 gap-2">
         <DocBreadcumb />
         <div className="flex flex-col flex-1"> {children}</div>
       </div>

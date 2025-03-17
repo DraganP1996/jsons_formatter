@@ -2,13 +2,23 @@ import { DocumentationPageDefinition } from "@/types";
 
 export const DOC_PAGE_CONFIG: DocumentationPageDefinition[] = [
   {
-    path: "getting-started",
+    path: "installation",
     order: 1,
-    name: "Getting started",
+    name: "Installation",
   },
   {
-    path: "something-else",
+    path: "json-editor",
     order: 2,
-    name: "Something else",
+    name: "JSON Editor",
+  },
+  {
+    path: "xml-editor",
+    order: 3,
+    name: "XML Editor",
+  },
+  {
+    path: "yaml-editor",
+    order: 4,
+    name: "YAML Editor",
   },
 ];
