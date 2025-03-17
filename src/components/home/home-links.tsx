@@ -1,4 +1,4 @@
-import { PAGES_CONFIG } from "@/app/config";
+import { PAGES_CONFIG } from "@/pages-configurations/config";
 import { ToolCard } from "./tool-card";
 
 export const HomeLinks = () => {

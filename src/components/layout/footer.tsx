@@ -1,7 +1,7 @@
 import { GithubIcon } from "lucide-react";
 import Link from "next/link";
 
-import { PAGES_CONFIG } from "@/app/config";
+import { PAGES_CONFIG } from "@/pages-configurations/config";
 
 export const Footer = () => {
   return (

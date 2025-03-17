@@ -1,2 +1,2 @@
-export * from "./editor";
 export * from "./documentation";
+export * from "./config";

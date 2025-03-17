@@ -5,7 +5,7 @@ import { WithContext, TechArticle } from "schema-dts";
 
 import { PAGE_PATHS, PageConfiguration, PageKeys, PagePaths } from "../../types";
 import { ConverterLayout } from "@/components/layout/converter-layout";
-import { PAGES_CONFIG } from "../../config";
+import { PAGES_CONFIG } from "../../../pages-configurations/config";
 
 type PageProps = {
   params: Promise<{ path: string }>;

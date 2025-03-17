@@ -11,7 +11,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "../ui";
-import { PAGES_CONFIG } from "@/app/config";
+import { PAGES_CONFIG } from "@/pages-configurations/config";
 import { PageKeys } from "@/app/types";
 import { cn } from "@/lib/utils";
 

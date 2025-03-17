@@ -2,7 +2,7 @@
 
 import { PAGE_PATHS, PageConfiguration, PageKeys } from "@/app/types";
 import { Converter } from "../converter";
-import { PAGES_CONFIG } from "@/app/config";
+import { PAGES_CONFIG } from "@/pages-configurations/config";
 
 export const ConverterLayout = ({ path }: { path: string }) => {
   const pageKey = Object.keys(PAGE_PATHS).find((key) => path === PAGE_PATHS[key as PageKeys])!;

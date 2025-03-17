@@ -1,20 +1,20 @@
 import { XMLBuilder, XMLParser } from "fast-xml-parser";
 import { parse, stringify } from "yaml";
 
-import { PAGE_PATHS, PagesDefinition } from "./types";
-import { jsonYamlMock, mockXML, mockYAML, standardMock } from "./mock";
+import { PAGE_PATHS, PagesDefinition } from "../app/types";
+import { jsonYamlMock, mockXML, mockYAML, standardMock } from "../app/mock";
 import { TabSizes } from "@/types";
 import { ControlsConfig } from "@/components/controls";
 import { ConverterAdditionalContent } from "@/components/pages-content";
 
-import { Posts } from "./posts";
+import { Posts } from "../app/posts";
 
 const showAllControls: ControlsConfig = {
   showTabSizeControl: true,
   showUploadControl: true,
   showThemeControl: true,
   showConvertToControl: true,
-  showCreateLinkControl: true,
+  showCreateLinkControl: false,
   showDownloadControl: true,
   showClearControl: true,
 };
@@ -73,7 +73,11 @@ export const PAGES_CONFIG: PagesDefinition = {
     keywords: ["json minify", "minify json", "json minify online"],
     path: PAGE_PATHS.jsonMinify,
     order: 1,
-    controlsConfig: { ...showAllControls, revertPath: PAGE_PATHS.jsonBeautify },
+    controlsConfig: {
+      ...showAllControls,
+      revertPath: PAGE_PATHS.jsonBeautify,
+      showTabSizeControl: false,
+    },
     converterConfig: {
       0: {
         id: "json_editor_origin_item",
