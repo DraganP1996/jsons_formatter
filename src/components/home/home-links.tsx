@@ -1,4 +1,4 @@
-import { PAGES_CONFIG } from "@/pages-configurations/config";
+import { PAGES_CONFIG } from "@/config/formatter";
 import { ToolCard } from "./tool-card";
 
 export const HomeLinks = () => {
@@ -25,12 +25,13 @@ export const HomeLinks = () => {
           <ToolCard
             title="Documentation"
             description="Explore the documentation of the webeditors components"
-            path=""
+            path="/documentation"
           />
           <ToolCard
             title="Contribute"
             description="Feel free to contribute if you have any suggestion"
-            path=""
+            path="https://github.com/DraganP1996/webeditors"
+            target="_blank"
           />
         </div>
       </div>

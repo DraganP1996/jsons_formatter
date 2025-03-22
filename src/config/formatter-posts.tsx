@@ -7,7 +7,7 @@ import YamlToJson from "../posts/yaml-to-json.mdx";
 import JsonToXml from "../posts/json-to-xml.mdx";
 import XmlToJson from "../posts/xml-to-json.mdx";
 
-export const Posts = {
+export const FormatterPosts = {
   JsonBeautify,
   JsonMinify,
   JsonToString,
@@ -16,4 +16,4 @@ export const Posts = {
   YamlToJson,
   JsonToXml,
   XmlToJson,
-};
+} as const;

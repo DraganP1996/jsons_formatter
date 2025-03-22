@@ -1,19 +1,17 @@
 import { XMLBuilder, XMLParser } from "fast-xml-parser";
 import { parse, stringify } from "yaml";
 
-import { PAGE_PATHS, PagesDefinition } from "../app/types";
 import { jsonYamlMock, mockXML, mockYAML, standardMock } from "../app/mock";
-import { TabSizes } from "@/types";
+import { FORMATTER_PATHS, FormatterPagesDefinition, TabSizes } from "@/types";
 import { ControlsConfig } from "@/components/controls";
+import { FormatterPosts } from "./formatter-posts";
 import { ConverterAdditionalContent } from "@/components/pages-content";
-
-import { Posts } from "../app/posts";
 
 const showAllControls: ControlsConfig = {
   showTabSizeControl: true,
-  showUploadControl: true,
+  showUploadControl: false,
   showThemeControl: true,
-  showConvertToControl: true,
+  showConvertToControl: false,
   showCreateLinkControl: false,
   showDownloadControl: true,
   showClearControl: true,
@@ -24,7 +22,7 @@ const xmlBuilder = new XMLBuilder({
 });
 const xmlParser = new XMLParser();
 
-export const PAGES_CONFIG: PagesDefinition = {
+export const PAGES_CONFIG: FormatterPagesDefinition = {
   jsonBeautify: {
     name: "Beautify Json Online",
     shortName: "Json Beautify",
@@ -37,9 +35,9 @@ export const PAGES_CONFIG: PagesDefinition = {
       "json beautifier chrome",
       "json prettify online",
     ],
-    path: PAGE_PATHS.jsonBeautify,
+    path: FORMATTER_PATHS.jsonBeautify,
     order: 0,
-    controlsConfig: { ...showAllControls, revertPath: PAGE_PATHS.jsonMinify },
+    controlsConfig: { ...showAllControls, revertPath: FORMATTER_PATHS.jsonMinify },
     converterConfig: {
       0: {
         id: "json_editor_origin_item",
@@ -59,9 +57,9 @@ export const PAGES_CONFIG: PagesDefinition = {
         ? JSON.stringify(JSON.parse(value), null, tabSize)
         : JSON.stringify(JSON.parse(value));
     },
-    additionalContent: (
+    post: (
       <ConverterAdditionalContent>
-        <Posts.JsonBeautify />
+        <FormatterPosts.JsonBeautify />
       </ConverterAdditionalContent>
     ),
   },
@@ -71,11 +69,11 @@ export const PAGES_CONFIG: PagesDefinition = {
     description:
       "Use our top JSON Minifier online tool to reduce the size of your JSON files. It's simple, quick, and trustworthy.",
     keywords: ["json minify", "minify json", "json minify online"],
-    path: PAGE_PATHS.jsonMinify,
+    path: FORMATTER_PATHS.jsonMinify,
     order: 1,
     controlsConfig: {
       ...showAllControls,
-      revertPath: PAGE_PATHS.jsonBeautify,
+      revertPath: FORMATTER_PATHS.jsonBeautify,
       showTabSizeControl: false,
     },
     converterConfig: {
@@ -93,9 +91,9 @@ export const PAGES_CONFIG: PagesDefinition = {
       },
     },
     sourceChangeFn: (value: string) => JSON.stringify(JSON.parse(value), null, 0),
-    additionalContent: (
+    post: (
       <ConverterAdditionalContent>
-        <Posts.JsonMinify />
+        <FormatterPosts.JsonMinify />
       </ConverterAdditionalContent>
     ),
   },
@@ -112,12 +110,12 @@ export const PAGES_CONFIG: PagesDefinition = {
       "convert json into string online",
       "json convert to string online",
     ],
-    path: PAGE_PATHS.jsonToString,
+    path: FORMATTER_PATHS.jsonToString,
     order: 2,
     controlsConfig: {
       ...showAllControls,
       showTabSizeControl: false,
-      revertPath: PAGE_PATHS.stringToJson,
+      revertPath: FORMATTER_PATHS.stringToJson,
     },
     converterConfig: {
       0: {
@@ -136,9 +134,9 @@ export const PAGES_CONFIG: PagesDefinition = {
     sourceChangeFn: (value: string) => {
       return JSON.stringify(JSON.stringify(JSON.parse(value)));
     },
-    additionalContent: (
+    post: (
       <ConverterAdditionalContent>
-        <Posts.JsonToString />
+        <FormatterPosts.JsonToString />
       </ConverterAdditionalContent>
     ),
   },
@@ -147,7 +145,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     shortName: "String to Json",
     description:
       "You can use our online converter to change eligible strings into formatted JSONs, making it easy to review your data.",
-    path: PAGE_PATHS.stringToJson,
+    path: FORMATTER_PATHS.stringToJson,
     keywords: [
       "string to json",
       "string json to json",
@@ -162,7 +160,7 @@ export const PAGES_CONFIG: PagesDefinition = {
       showUploadControl: false,
       showConvertToControl: false,
       showCreateLinkControl: false,
-      revertPath: PAGE_PATHS.jsonToString,
+      revertPath: FORMATTER_PATHS.jsonToString,
     },
     converterConfig: {
       0: {
@@ -186,9 +184,9 @@ export const PAGES_CONFIG: PagesDefinition = {
 
       return formattedValue;
     },
-    additionalContent: (
+    post: (
       <ConverterAdditionalContent>
-        <Posts.StringToJson />
+        <FormatterPosts.StringToJson />
       </ConverterAdditionalContent>
     ),
   },
@@ -197,7 +195,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     shortName: "Json to XML",
     description:
       "Convert JSON to XML quickly with our free and easy online tool. Change your JSON data into clear, organized XML in just seconds.",
-    path: PAGE_PATHS.jsonToXml,
+    path: FORMATTER_PATHS.jsonToXml,
     keywords: [
       "json to xml",
       "json to xml converter",
@@ -213,7 +211,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     controlsConfig: {
       ...showAllControls,
       showTabSizeControl: false,
-      revertPath: PAGE_PATHS.xmlToJson,
+      revertPath: FORMATTER_PATHS.xmlToJson,
     },
     converterConfig: {
       0: {
@@ -232,9 +230,9 @@ export const PAGES_CONFIG: PagesDefinition = {
     sourceChangeFn: (value: string) => {
       return xmlBuilder.build(JSON.parse(value));
     },
-    additionalContent: (
+    post: (
       <ConverterAdditionalContent>
-        <Posts.JsonToXml />
+        <FormatterPosts.JsonToXml />
       </ConverterAdditionalContent>
     ),
   },
@@ -243,7 +241,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     shortName: "XML to Json",
     description:
       "Convert XML into JSON using the best online tool designed for this task. It's quick, easy, and effective.",
-    path: PAGE_PATHS.xmlToJson,
+    path: FORMATTER_PATHS.xmlToJson,
     keywords: [
       "xml to json",
       "xml to json converter",
@@ -260,7 +258,7 @@ export const PAGES_CONFIG: PagesDefinition = {
       showUploadControl: false,
       showConvertToControl: false,
       showCreateLinkControl: false,
-      revertPath: PAGE_PATHS.jsonToXml,
+      revertPath: FORMATTER_PATHS.jsonToXml,
     },
     converterConfig: {
       0: {
@@ -284,9 +282,9 @@ export const PAGES_CONFIG: PagesDefinition = {
 
       return formattedValue;
     },
-    additionalContent: (
+    post: (
       <ConverterAdditionalContent>
-        <Posts.XmlToJson />
+        <FormatterPosts.XmlToJson />
       </ConverterAdditionalContent>
     ),
   },
@@ -295,7 +293,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     shortName: "Json to YAML",
     description:
       "Easily convert JSON data into YAML format with our fast, free, and reliable online toolt. Perfect for developers and data enthusiasts.",
-    path: PAGE_PATHS.jsonToYaml,
+    path: FORMATTER_PATHS.jsonToYaml,
     keywords: [
       "json to yaml",
       "json to yaml converter",
@@ -307,11 +305,11 @@ export const PAGES_CONFIG: PagesDefinition = {
     controlsConfig: {
       ...showAllControls,
       showTabSizeControl: false,
-      revertPath: PAGE_PATHS.yamlToJson,
+      revertPath: FORMATTER_PATHS.yamlToJson,
     },
-    additionalContent: (
+    post: (
       <ConverterAdditionalContent>
-        <Posts.JsonToYaml />
+        <FormatterPosts.JsonToYaml />
       </ConverterAdditionalContent>
     ),
     converterConfig: {
@@ -336,7 +334,7 @@ export const PAGES_CONFIG: PagesDefinition = {
     name: "YAML to Json Online Converter",
     shortName: "YAML to Json",
     description: "Use this online convert to change your YAML file into a valid JSON format.",
-    path: PAGE_PATHS.yamlToJson,
+    path: FORMATTER_PATHS.yamlToJson,
     keywords: [
       "yaml to json",
       "convert yaml to json",
@@ -350,7 +348,7 @@ export const PAGES_CONFIG: PagesDefinition = {
       showUploadControl: false,
       showConvertToControl: false,
       showCreateLinkControl: false,
-      revertPath: PAGE_PATHS.jsonToYaml,
+      revertPath: FORMATTER_PATHS.jsonToYaml,
     },
     converterConfig: {
       0: {
@@ -380,9 +378,9 @@ export const PAGES_CONFIG: PagesDefinition = {
         return "";
       }
     },
-    additionalContent: (
+    post: (
       <ConverterAdditionalContent>
-        <Posts.YamlToJson />
+        <FormatterPosts.YamlToJson />
       </ConverterAdditionalContent>
     ),
   },

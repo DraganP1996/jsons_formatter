@@ -8,7 +8,7 @@ export type DocNavigationProps = {
 
 export const DocNavigation = ({ libraries }: DocNavigationProps) => {
   return (
-    <aside className="flex flex-col bg-stone-100 w-[250px] shadow gap-2">
+    <aside className="flex flex-col bg-stone-100 shadow gap-2 w-full">
       <div className="flex flex-col p-4">
         <h1 className="font-electrolize text-4xl font-bold mb-0"> Webeditors </h1>
         <p className="text-xs pt-0 italic text-stone-600">

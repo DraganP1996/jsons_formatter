@@ -1,3 +1,214 @@
+import { MdxCodeEditor } from '../../../components/documentation/mdx-code-editor'
+import { TestTabs } from '../../../components/documentation/test-tabs'
+
+import {
+    DEMO_YAML_EXAMPLE,
+    YAML_EDITOR_IMPORT,
+    BASIC_YAML_EDITOR_TSX,
+    COMPLEX_YAML_DATA,
+    YAML_EDITOR_WITH_FOOTER_CONFIG,
+    YAML_EDITOR_WITH_ACTION_PANEL
+} from '../../../code-snippets/yaml-editor'
+import {
+    EditorFooterConfig_Type_Example,
+} from '../../../code-snippets/json-editor'
+
 # YAML editor
 
-Yaml editor bla bla bla bla.
+The YAML web editor is a React component designed to show editable YAML data within a web editor.
+
+<MdxCodeEditor theme="amy" height="85px" readonly={false} type="yaml" value={DEMO_YAML_EXAMPLE} />
+<MdxCodeEditor theme="barf" height="85px" readonly={false} type="yaml" value={DEMO_YAML_EXAMPLE} />
+<MdxCodeEditor theme="bespin" height="85px" readonly={false} type="yaml" value={DEMO_YAML_EXAMPLE} />
+<MdxCodeEditor theme="cobalt" height="85px" readonly={false} type="yaml" value={DEMO_YAML_EXAMPLE} />
+<MdxCodeEditor theme="coolGlow" height="85px" readonly={false} type="yaml" value={DEMO_YAML_EXAMPLE} />
+<MdxCodeEditor theme="clouds" height="85px" readonly={false} type="yaml" value={DEMO_YAML_EXAMPLE} />
+
+---
+
+## Usage
+
+<div className='p-2'>
+    <TestTabs tabs={[
+        {
+            value: 'preview',
+            name: 'Preview',
+            content: 
+            <div className="p-2 h-[400px]">
+                <MdxCodeEditor theme="cobalt" height="100%" readonly={false} type="javascript" value={COMPLEX_YAML_DATA} />
+            </div>
+        },
+        {
+            value: 'code',
+            name: 'Code',
+            content: 
+            <div className="p-2 h-[400px]">
+                <MdxCodeEditor theme="cobalt" height="auto" readonly={false} type="javascript" value={YAML_EDITOR_IMPORT} />
+                <MdxCodeEditor theme="cobalt" height="auto" readonly={false} type="javascript" value={BASIC_YAML_EDITOR_TSX} />
+            </div>
+        }
+    ]} />
+</div>
+
+---
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default |
+|:---------|:---------|:---------|
+| ```value```  | ```string```  | -  |
+| ```readonly```  | ```boolean```  | ```false```  |
+| ```showFooter```  | ```boolean```  | -  |
+| ```footerConfig```  | ```EditorFooterConfig```  | -  |
+| ```showActionsPanel```  | ```boolean```  | -  |
+| ```theme```  | ```ThemeNames```  | -  |
+
+#### value
+
+Used to set the starting value that will appear in the editor. The type is a string and if it is not a valid YAML an error will be
+visible in the editor.
+
+#### readonly
+
+This setting determines whether the editor can be edited. If the value is set to false, the editor is editable; if true, it becomes 
+read-only. By default, the value is false.
+
+#### footerConfig
+
+This prop serves two main purposes:  
+- When defined, it ensures that the editor's footer is displayed.  
+- It allows for customization of the footer's styling (see the type definition below).
+
+<div className='p-2'>
+    <TestTabs tabs={[
+        {
+            value: 'preview',
+            name: 'Preview',
+            content: 
+            <div className="p-2 h-[400px]">
+             <MdxCodeEditor 
+                theme="cobalt" 
+                height="100%" 
+                readonly={false} 
+                type="yaml" 
+                value={COMPLEX_YAML_DATA} 
+                footerConfig={{ color: '#000', backgroundColor: '#efefef' }}/>
+            </div>
+        },
+        {
+            value: 'code',
+            name: 'Code',
+            content: 
+            <div className="p-2 h-[400px]">
+                <MdxCodeEditor theme="cobalt" height="auto" readonly={false} type="javascript" value={YAML_EDITOR_WITH_FOOTER_CONFIG} />
+            </div>
+        }
+    ]} />
+</div>
+
+
+##### EditorFooterConfig
+
+<div className="p-2 h-[200px] w-full">
+    <MdxCodeEditor 
+        theme="cobalt" 
+        height="100%" 
+        readonly={true} 
+        type="javascript" 
+        value={EditorFooterConfig_Type_Example} 
+        showFooter={true}/>
+ </div>
+
+#### showActionsPanel
+
+The editor allows you to include a custom panel at the top. This property determines whether the panel will be displayed.
+
+##### How can you add a custom panel at the top of the editor?
+
+To add a custom panel, simply place a div with the slot="panel" attribute between the opening and closing tags of the YAMLEditor 
+component, as shown in the example below.
+
+The content of the custom panel can have any style defined by you.
+
+<div className='p-2'>
+    <TestTabs tabs={[
+        {
+            value: 'preview',
+            name: 'Preview',
+            content: 
+            <div className="p-2 h-[400px]">
+             <MdxCodeEditor 
+                theme="cobalt" 
+                height="100%" 
+                readonly={false} 
+                type="yaml" 
+                value={COMPLEX_YAML_DATA} 
+                showActionsPanel={true} />
+            </div>
+        },
+        {
+            value: 'code',
+            name: 'Code',
+            content: 
+            <div className="p-2 h-[400px]">
+                <MdxCodeEditor theme="cobalt" height="auto" readonly={false} type="javascript" value={YAML_EDITOR_WITH_ACTION_PANEL} />
+            </div>
+        }
+    ]} />
+</div>
+
+
+#### theme
+
+This prop makes possible to use a different theme for the editor. Currently we are supporting the following list of themes,
+we are working in order to make possible for you a greated number of customizations:
+
+| Theme |
+|:---------|
+| amy |
+| ayuLight |
+| barf |
+| bespin |
+| birdsOfParadise |
+| boysAndGirls |
+| clouds |
+| cobalt |
+| coolGlow |
+| dracula |
+| espresso |
+| noctisLilac |
+| rosePineDawn |
+| smoothy |
+| solarizedLight |
+| tomorrow |
+
+---
+
+### Events
+
+| Name | Return Type |
+|:---------|:---------|
+| editorChange  | Promise\<void\>  |
+
+#### editorChange
+
+This is the event of the component, emits the stringified value of the editor after every changes.
+
+---
+
+### Methods
+
+| Name | Return Type |
+|:---------|:---------|
+| foldAll  | Promise\<void\>   |
+| unfoldAll  | Promise\<void\>  |
+
+#### foldAll
+
+The editor exposes the foldAll method, that makes possible to fold all the foldable lines in the editor.
+
+#### unfoldAll
+
+The editor exposes the unfoldAll method, that makes possible to unfold all the foldable lines in the editor.

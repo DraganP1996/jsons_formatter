@@ -1,7 +1,7 @@
 "use client";
 
 import { Converter } from "../converter";
-import { PAGES_CONFIG } from "@/pages-configurations/config";
+import { PAGES_CONFIG } from "@/config/formatter";
 
 export const HomeEditor = () => {
   const configuration = PAGES_CONFIG.jsonBeautify;

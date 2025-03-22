@@ -26,10 +26,22 @@ const DocBreadcumbLink = ({ path }: { path: string }) => {
   );
 };
 
+const convertPathToPageName = (path: string) => {
+  const pathWords = path.split("-");
+
+  console.log("Path words", pathWords);
+
+  const formattedPathWords = pathWords.map((word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1, word.length);
+  });
+
+  return formattedPathWords.join(" ");
+};
+
 const DocBreadcumbPage = ({ path }: { path: string }) => {
   const paths = path.split("/");
   const pathname = paths[paths.length - 1];
-  const name = capitalizeWord(pathname);
+  const name = convertPathToPageName(pathname);
 
   return (
     <BreadcrumbItem>

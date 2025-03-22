@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-
-import { HomeEditor, HomeHeading, HomeLinks } from "@/components/home";
 import { TechArticle, WithContext } from "schema-dts";
 import Script from "next/script";
+
+import { HomeEditor, HomeHeading, HomeLinks } from "@/components/home";
 
 export const metadata: Metadata = {
   title: "JSONs Formatter - Beautify, Minify, and Convert JSON Online",

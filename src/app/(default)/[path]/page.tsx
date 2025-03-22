@@ -1,11 +1,15 @@
 import { Metadata } from "next";
 import Script from "next/script";
-
 import { WithContext, TechArticle } from "schema-dts";
 
-import { PAGE_PATHS, PageConfiguration, PageKeys, PagePaths } from "../../types";
 import { ConverterLayout } from "@/components/layout/converter-layout";
-import { PAGES_CONFIG } from "../../../pages-configurations/config";
+import { PAGES_CONFIG } from "../../../config/formatter";
+import {
+  FORMATTER_PATHS,
+  FormatterPageConfiguration,
+  FormatterPageKeys,
+  FormatterPagePaths,
+} from "@/types";
 
 type PageProps = {
   params: Promise<{ path: string }>;
@@ -14,8 +18,10 @@ type PageProps = {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { path } = await params;
 
-  const pageKey = Object.keys(PAGE_PATHS).find((key) => path === PAGE_PATHS[key as PageKeys])!;
-  const configuration: PageConfiguration = PAGES_CONFIG[pageKey as PageKeys];
+  const pageKey = Object.keys(FORMATTER_PATHS).find(
+    (key) => path === FORMATTER_PATHS[key as FormatterPageKeys]
+  )!;
+  const configuration: FormatterPageConfiguration = PAGES_CONFIG[pageKey as FormatterPageKeys];
 
   return {
     title: configuration.name,
@@ -46,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
-  const paths: PagePaths[] = Object.values(PAGE_PATHS);
+  const paths: FormatterPagePaths[] = Object.values(FORMATTER_PATHS);
 
   return paths.map((path) => ({
     path,
@@ -57,8 +63,10 @@ export const dynamicParams = false;
 
 export default async function Page({ params }: PageProps) {
   const { path } = await params;
-  const pageKey = Object.keys(PAGE_PATHS).find((key) => path === PAGE_PATHS[key as PageKeys])!;
-  const configuration: PageConfiguration = PAGES_CONFIG[pageKey as PageKeys];
+  const pageKey = Object.keys(FORMATTER_PATHS).find(
+    (key) => path === FORMATTER_PATHS[key as FormatterPageKeys]
+  )!;
+  const configuration: FormatterPageConfiguration = PAGES_CONFIG[pageKey as FormatterPageKeys];
 
   const jsonLd: WithContext<TechArticle> = {
     "@context": "https://schema.org",
@@ -113,7 +121,7 @@ export default async function Page({ params }: PageProps) {
           </h1>
         </div>
         <ConverterLayout path={path} />
-        {!!configuration?.additionalContent && configuration.additionalContent}
+        {!!configuration?.post && configuration.post}
       </div>
     </>
   );

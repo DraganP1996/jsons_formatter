@@ -1,28 +1,51 @@
 "use client";
 
-import { DOC_PAGE_CONFIG } from "@/pages-configurations";
-import { LIbraryInfo } from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export type DocNavigationProps = {
+import { DOC_PATHS, DocPageKeys, DocPagePaths, LIbraryInfo } from "@/types";
+import { DOC_PAGE_CONFIG } from "@/config";
+import { useMemo } from "react";
+
+export type DocNavigationListProps = {
   libraries: LIbraryInfo[];
 };
 
-export const NavigationList = ({ libraries }: DocNavigationProps) => {
+export const NavigationList = ({ libraries }: DocNavigationListProps) => {
   const pathname = usePathname();
-  const activeLib = libraries.find((lib) => pathname.includes(lib.path));
+  const activeLib = useMemo(
+    () => libraries.find((lib) => pathname.includes(lib.path)),
+    [libraries, pathname]
+  );
+
+  const getPageName = useMemo(
+    () => (path: DocPagePaths) => {
+      if (!activeLib) return;
+
+      const frameworkConfig = DOC_PAGE_CONFIG[activeLib.framework];
+      const pageKey = Object.keys(frameworkConfig).find(
+        (key) => frameworkConfig[key as DocPageKeys].path === path
+      );
+
+      if (!pageKey) return;
+
+      const name = frameworkConfig[pageKey as DocPageKeys].name;
+
+      return name;
+    },
+    [activeLib]
+  );
 
   return (
     <div className="flex flex-col">
       {activeLib &&
-        DOC_PAGE_CONFIG.map((page) => (
+        Object.values(DOC_PATHS).map((path) => (
           <Link
-            href={`${process.env.NEXT_PUBLIC_BASE_URL}/documentation/${activeLib.path}/${page.path}`}
-            key={page.path}
+            href={`${process.env.NEXT_PUBLIC_BASE_URL}/documentation/${activeLib.path}/${path}`}
+            key={path}
             className="w-full p-2 py-3 hover:bg-stone-200 cursor-pointer text-sm"
           >
-            {page.name}
+            {getPageName(path)}
           </Link>
         ))}
     </div>
