@@ -45,6 +45,7 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098826907138268"
           crossOrigin="anonymous"
         />
+        <meta name="google-adsense-account" content="ca-pub-7098826907138268" />
       </head>
       <body
         className={`${electrolize.variable} ${kumar_one_outline.variable} ${anta.variable} font-anta antialiased min-h-[100vh] bg-white`}
