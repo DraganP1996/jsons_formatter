@@ -21,6 +21,7 @@ export type DocPageKeys = keyof typeof DOC_PATHS;
 export type DocPagePaths = (typeof DOC_PATHS)[DocPageKeys];
 
 export type DocumentationPageDefinition = BasicPageConfiguration<DocPagePaths>;
+export type FrameworkPageDefinition = BasicPageConfiguration<Framework>;
 
 export type DocPagesDefinition = Record<
   Framework,

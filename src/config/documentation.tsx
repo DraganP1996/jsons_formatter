@@ -1,4 +1,4 @@
-import { DOC_PATHS, DocPagesDefinition } from "@/types";
+import { DOC_PATHS, DocPagesDefinition, FrameworkPageDefinition } from "@/types";
 
 import { DocPosts } from "./doc-posts";
 
@@ -17,7 +17,7 @@ const MDX_COMPONENTS = {
   ),
 };
 
-export const FRAMEWORK_HOME_CONFIGS = {
+export const FRAMEWORK_HOME_CONFIGS: { [key: string]: FrameworkPageDefinition } = {
   vanilla: {
     path: "vanilla",
     order: 1,
