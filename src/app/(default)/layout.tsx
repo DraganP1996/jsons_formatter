@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Electrolize, Kumar_One_Outline, Roboto } from "next/font/google";
+import Script from "next/script";
 
 import "../globals.css";
 import { Header } from "@/components/layout";
@@ -39,6 +40,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098826907138268"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${electrolize.variable} ${kumar_one_outline.variable} ${anta.variable} font-anta antialiased min-h-[100vh] bg-white`}
       >
