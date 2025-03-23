@@ -42,10 +42,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="3955a298-8009-4614-b2ab-b9f7026086e5"
+          type="text/javascript"
           async
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098826907138268"
-          crossOrigin="anonymous"
         />
         <meta name="google-adsense-account" content="ca-pub-7098826907138268" />
       </head>
